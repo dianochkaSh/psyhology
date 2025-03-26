@@ -12,7 +12,7 @@ export class Blog {
   description: string;
 
   @Prop()
-  picture: number;
+  picture: string;
 }
 
 export const BlogSchema = SchemaFactory.createForClass(Blog);
