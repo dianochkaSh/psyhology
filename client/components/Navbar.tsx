@@ -12,17 +12,28 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { ThemeProvider, createTheme, makeStyles } from '@mui/material/styles';
+import { ListItem } from '@mui/material';
+import Router from 'next/router';
 
 
-const pages = ['Обо мне', 'Блог', 'Подкасты', 'Достижения', 'Контакты'];
-const settings = ['Профиль', 'Выйти'];
+const pages = [
+  { title: 'Обо мне', href: '/'},
+  { title: 'Блог', href: '/blogs'},
+  { title: 'Подкасты', href: '/podcasts'},
+  { title: 'Достижения', href: '/'},
+  { title: 'Контакты', href: '/'},
+];
+const settings = [
+  { title: 'Профиль', href: '#'},
+  { title: 'Выйти', href: '#'}
+];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    console.log(event.currentTarget);
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -36,6 +47,7 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  // const router = useRouter();
 
 
   return (
@@ -89,8 +101,8 @@ function ResponsiveAppBar() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                <MenuItem key={page.href} onClick={() => Router.push(setting.href)}>
+                  <Typography sx={{ textAlign: 'center' }}>{page.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -117,11 +129,11 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.href}
+                onClick={() => Router.push(page.href)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page.title}
               </Button>
             ))}
           </Box>
@@ -148,9 +160,9 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
-                </MenuItem>
+                <ListItem key={setting.title} onClick={handleCloseUserMenu}>
+                  <Typography sx={{ textAlign: 'center' }}>{setting.title}</Typography>
+                </ListItem>
               ))}
             </Menu>
           </Box>

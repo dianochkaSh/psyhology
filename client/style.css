@@ -1,2 +1,5 @@
 
 @app-bar-color: #3E424B;
+body{
+    margin: 0;
+}
