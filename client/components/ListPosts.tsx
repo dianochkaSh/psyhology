@@ -1,11 +1,9 @@
 import React from 'react';
 import { IBlog } from '@/types/blog';
 import { Box, Grid } from '@mui/material';
-import { Podcasts } from '@mui/icons-material';
+
+/*components*/
 import Article from '@/components/Article';
-import Container from '@mui/material/Container';
-
-
 
 interface BlogPostsProps {
   posts: IBlog[]
@@ -25,7 +23,7 @@ const ListPosts :React.FC<BlogPostsProps> = ({ posts }) => {
 
       }}>
         {posts.map(post =>
-          <Article post={ post} />
+          <Article post={post} />
       )}
       </Box>
     </Grid>

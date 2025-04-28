@@ -1,16 +1,23 @@
 import React from 'react';
+import { fetchBlog } from '@/store/actions-creators/blog';
+import { wrapper } from '@/store';
+
+
+/*components*/
 import MainLayout from '@/layouts/MainLayout';
 import BigImage from '@/components/BigImage';
 import Articles from '@/components/Articles';
 import BlockText from '@/components/BlockText';
-import { fetchBlog } from '@/store/actions-creators/blog';
-import { wrapper } from '@/store';
+import ButtonLink from '@/components/ButtonLink';
 
+
+/*styles*/
 import '../style.css';
 
 const Index = () => {
  const textDevided: string = "У непрожитых чувств нет срока годности";
- const styleTextDevided = "title-blog";
+ const styleTextDevided:string = "title-blog";
+ const titleBt:string = "Увидеть больше записей";
   return(
     <>
       <MainLayout>
@@ -22,19 +29,23 @@ const Index = () => {
           </div>
 
           {/*block articles */}
-
           <Articles />
+          <div className="container-bt-all-articles">
+            <ButtonLink
+              titleText={titleBt}
+              urlText="/blogs"
+            />
+          </div>
+
 
           {/*block sertifications */}
           {/*block contacts */}
       </MainLayout>
-
-
     </>
   )
 }
 export default Index;
 
 Index.getInitialProps = wrapper.getInitialAppProps((store) => async () => {
-  return store.dispatch(fetchBlog());
+  return store.dispatch(fetchBlog(3));
 });

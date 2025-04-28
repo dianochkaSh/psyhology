@@ -1,6 +1,8 @@
 import React from 'react';
 import ListPosts from '@/components/ListPosts';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
+
+/*components*/
 import BlockText from '@/components/BlockText';
 
 const Articles = () => {
@@ -15,4 +17,3 @@ const Articles = () => {
 }
 
 export default Articles;
-

@@ -23,7 +23,18 @@ body{
     padding-top: 100px;
 }
 .container-articles {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     margin-top: 80px;
     text-align: center;
+}
+.container-bt-all-articles {
+    margin: 0 auto;
+    text-align: center;
+}
+.bt{
+    color: #76c3fc;
+}
+.bt:hover{
+    background-color: #76c3fc;
+    color: #FFFF;
 }
