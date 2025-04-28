@@ -1,22 +1,34 @@
-import { IBlog } from '@/types/blog';
 import React from 'react';
+import { IBlog } from '@/types/blog';
+import { Box, Grid } from '@mui/material';
+import { Podcasts } from '@mui/icons-material';
+import Article from '@/components/Article';
+import Container from '@mui/material/Container';
+
+
 
 interface BlogPostsProps {
   posts: IBlog[]
 }
 const ListPosts :React.FC<BlogPostsProps> = ({ posts }) => {
-console.log('posts');
-console.log(posts);
   return(
-    <div>
-      {posts.map(post =>
-        <div id={post._id}>
-          <p>{post.title}</p>
-          <p>{post.description}</p>
-        </div>
-      )}
+    <Grid container
+      direction="row"
+      sx={{
+        justifyContent: "space-around",
+        alignItems: "flex-start",
+      }}>
+      <Box sx={{
+        width: '80%',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
 
-    </div>
+      }}>
+        {posts.map(post =>
+          <Article post={ post} />
+      )}
+      </Box>
+    </Grid>
   )
 }
 

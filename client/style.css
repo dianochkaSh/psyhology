@@ -2,4 +2,28 @@
 @app-bar-color: #3E424B;
 body{
     margin: 0;
+
+
+}
+.title-blog {
+    /*padding-top: 25px;*/
+    /*padding-bottom: 25px;*/
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 16pt !important;
+    color: #ffff !important;
+
+    text-align: center;
+}
+.container-text-devided {
+    background: #76c3fc;
+    padding-bottom: 100px;
+    padding-left: 28.7969px;
+    padding-right: 28.7969px;
+    padding-top: 100px;
+}
+.container-articles {
+    margin-bottom: 80px;
+    margin-top: 80px;
+    text-align: center;
 }
