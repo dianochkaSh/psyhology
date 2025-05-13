@@ -21,7 +21,6 @@ const pages = [
   { title: 'Блог', href: '/blogs'},
   { title: 'Подкасты', href: '/podcasts'},
   { title: 'Достижения', href: '/'},
-  { title: 'Контакты', href: '/'},
 ];
 const settings = [
   { title: 'Профиль', href: '#'},

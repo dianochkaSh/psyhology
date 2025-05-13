@@ -11,7 +11,7 @@ interface BlogPost {
 
 const Article : React.FC<BlogPost> = ({ post }) =>  {
   return (
-    <Card sx={{ width: 320, marginBottom: 3, marginTop: 3 }}>
+    <Card className="card-article" sx={{ width: 320, marginBottom: 3, marginTop: 3 }}>
       <CardOverflow>
         <AspectRatio ratio="2">
           <img

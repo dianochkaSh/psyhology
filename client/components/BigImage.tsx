@@ -3,9 +3,9 @@ import Image from 'next/image';
 
 const BigImage = () => {
   return (
-    <>
-      <Image width="1920" height="720" src="/big-img.jpg" alt="" />
-    </>
+    <section className="big-image-section">
+      <Image width="1920" height="680" src="/big-img.jpg" alt="" />
+    </section>
   )
 }
 export  default BigImage;

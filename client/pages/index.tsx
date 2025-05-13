@@ -1,7 +1,5 @@
 import React from 'react';
-import { fetchBlog } from '@/store/actions-creators/blog';
 import { wrapper } from '@/store';
-
 
 /*components*/
 import MainLayout from '@/layouts/MainLayout';
@@ -9,10 +7,15 @@ import BigImage from '@/components/BigImage';
 import Articles from '@/components/Articles';
 import BlockText from '@/components/BlockText';
 import ButtonLink from '@/components/ButtonLink';
-
+import ListProblemsRecords from '@/components/ListProblemsRecords';
+import ContactBlock from '@/components/ContactBlock';
 
 /*styles*/
 import '../style.css';
+
+/* action */
+import { fetchProblems } from '@/store/actions-creators/problem';
+import { fetchBlog } from '@/store/actions-creators/blog';
 
 const Index = () => {
  const textDevided: string = "У непрожитых чувств нет срока годности";
@@ -21,8 +24,11 @@ const Index = () => {
   return(
     <>
       <MainLayout>
-        <BigImage />
+        <section className="section-img">
+          <ContactBlock />
+        </section>
           {/*block about problem people*/}
+          <ListProblemsRecords />
           {/*block about person */}
           <div className="container-text-devided">
             <BlockText styles={styleTextDevided}  text={textDevided} />
@@ -47,5 +53,7 @@ const Index = () => {
 export default Index;
 
 Index.getInitialProps = wrapper.getInitialAppProps((store) => async () => {
-  return store.dispatch(fetchBlog(3));
+    await store.dispatch(fetchBlog(3));
+    await store.dispatch(fetchProblems());
+  return  store;
 });
