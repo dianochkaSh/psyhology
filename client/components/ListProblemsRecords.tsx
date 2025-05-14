@@ -14,7 +14,7 @@ import Typography from '@mui/joy/Typography';
 const ListProblemsRecords:React.FC = () => {
 
   const { problems, error} = useTypedSelector(state => state.problem);
-  const options  = { direction: 'rtl', loop: true }
+  const options: object  = { direction: 'rtl', loop: true }
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const {

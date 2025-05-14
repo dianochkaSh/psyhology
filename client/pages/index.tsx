@@ -3,7 +3,6 @@ import { wrapper } from '@/store';
 
 /*components*/
 import MainLayout from '@/layouts/MainLayout';
-import BigImage from '@/components/BigImage';
 import Articles from '@/components/Articles';
 import BlockText from '@/components/BlockText';
 import ButtonLink from '@/components/ButtonLink';
@@ -45,7 +44,6 @@ const Index = () => {
 
 
           {/*block sertifications */}
-          {/*block contacts */}
       </MainLayout>
     </>
   )
