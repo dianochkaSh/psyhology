@@ -2,8 +2,10 @@ import React from 'react';
 import Card from '@mui/joy/Card' ;
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
-import { IBlog } from '@/types/blog';
 import { AspectRatio, CardActions, CardOverflow, Link } from '@mui/joy';
+
+/* types */
+import { IBlog } from '@/types/blog';
 
 interface BlogPost {
   post: IBlog[]

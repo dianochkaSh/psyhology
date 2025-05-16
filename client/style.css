@@ -24,7 +24,7 @@ body{
 }
 .container-articles {
     margin-bottom: 40px;
-    margin-top: 80px;
+    margin-top: 40px;
     text-align: center;
 }
 .container-bt-all-articles {
@@ -158,7 +158,7 @@ body{
     font-size: 1.875rem;
     line-height: 1.33334;
     letter-spacing: -0.025em;
-    margin-left: 20px;
+    margin-left: 25px;
     text-align: left;
 }
 .section-problem h2{
@@ -166,4 +166,53 @@ body{
 }
 .section-problem{
     background-color: rgba(118, 195, 252, 0.1);
+    padding-top: 40px;
+}
+.section-person {
+    display: flex;
+}
+.section-person .container-about, .section-person .container-picture  {
+    flex: 1 1 0;
+    width: 0;
+    padding: 51px 30px;
+}
+.section-person .container-picture {
+    text-align: center;
+}
+.section-person .container-picture img{
+    width: 400px !important;
+    position: relative !important;
+}
+.container-about .title-person-block {
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 1.33334;
+    letter-spacing: -.025em;
+    text-align: left;
+}
+.bt-record {
+    background-color: #76c3fc !important;
+    color: #fff !important;
+}
+.img-therapy {
+    width: 40px !important;
+    height: 40px !important;
+    /*width: 100px;*/
+    margin: auto;
+    display: block;
+}
+.container-therapy {
+    display: flex;
+}
+.container-therapy .container-therapy-item1 {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+.container-therapy .container-therapy-item2 {
+    flex: 1;
+}
+.container-therapy .container-therapy-item2 span{
+    font-style: italic;
+    color: #32383E;
 }

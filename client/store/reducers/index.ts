@@ -1,12 +1,16 @@
 import { combineReducers } from 'redux';
 import { HYDRATE } from 'next-redux-wrapper';
+
+/* reducers */
 import { blogReducer } from './blogReducer';
 import { problemReducer } from './problemReducer';
+import { personReducer } from '@/store/reducers/personReducer';
 
 
 const rootReducer = combineReducers({
     blog: blogReducer,
-    problem: problemReducer
+    problem: problemReducer,
+    person: personReducer
 });
 export  const reducer = (state, action) => {
   if (action.type === HYDRATE) {

@@ -22,9 +22,11 @@ const ListPosts :React.FC<BlogPostsProps> = ({ posts }) => {
         gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
 
       }}>
-        {posts.map(post =>
-          <Article post={post} />
-      )}
+        {
+          posts.map((post) =>
+            <Article key={post._id} post={post} />
+          )
+        }
       </Box>
     </Grid>
   )

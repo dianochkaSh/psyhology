@@ -15,33 +15,43 @@ import '../style.css';
 /* action */
 import { fetchProblems } from '@/store/actions-creators/problem';
 import { fetchBlog } from '@/store/actions-creators/blog';
+import { fetchPerson } from '@/store/actions-creators/person';
+import AboutPerson from '@/components/AboutPerson';
+
+/* constants */
+import { COUNT_ARTICLES_IN_MAIN } from '@/consts/consts';
 
 const Index = () => {
  const textDevided: string = "У непрожитых чувств нет срока годности";
  const styleTextDevided:string = "title-blog";
  const titleBt:string = "Увидеть больше записей";
+
   return(
     <>
       <MainLayout>
         <section className="section-img">
           <ContactBlock />
         </section>
-          {/*block about problem people*/}
-          <ListProblemsRecords />
-          {/*block about person */}
-          <div className="container-text-devided">
-            <BlockText styles={styleTextDevided}  text={textDevided} />
-          </div>
 
-          {/*block articles */}
-          <Articles />
-          <div className="container-bt-all-articles">
-            <ButtonLink
-              titleText={titleBt}
-              urlText="/blogs"
-            />
-          </div>
+        {/*block about person*/}
+        <AboutPerson />
 
+        {/*block about problem people*/}
+        <ListProblemsRecords />
+
+        {/*block about person */}
+        <div className="container-text-devided">
+          <BlockText styles={styleTextDevided}  text={textDevided} />
+        </div>
+
+        {/*block articles */}
+        <Articles />
+        <div className="container-bt-all-articles">
+          <ButtonLink
+            titleText={titleBt}
+            urlText="/blogs"
+          />
+        </div>
 
           {/*block sertifications */}
       </MainLayout>
@@ -51,7 +61,8 @@ const Index = () => {
 export default Index;
 
 Index.getInitialProps = wrapper.getInitialAppProps((store) => async () => {
-    await store.dispatch(fetchBlog(3));
+    await store.dispatch(fetchBlog(COUNT_ARTICLES_IN_MAIN));
     await store.dispatch(fetchProblems());
+    await store.dispatch(fetchPerson());
   return  store;
 });
