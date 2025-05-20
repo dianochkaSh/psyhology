@@ -60,7 +60,7 @@ const Index = () => {
 }
 export default Index;
 
-Index.getInitialProps = wrapper.getInitialAppProps((store) => async () => {
+Index.getInitialProps = wrapper.getInitialAppProps((store) => async (): Promise => {
     await store.dispatch(fetchBlog(COUNT_ARTICLES_IN_MAIN));
     await store.dispatch(fetchProblems());
     await store.dispatch(fetchPerson());

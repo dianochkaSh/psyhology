@@ -10,27 +10,32 @@ const AboutPerson:React.FC = () => {
   const textTitle: string = "Обо мне: ";
   const stylesTitle: string = "title-person-block";
   return (
-    <section className="section-person">
-      <div className="container-picture">
-        <Image alt={person[0].name} src="/nata.jpg" layout="fill" />
-      </div>
-      <div className="container-about">
-        <BlockText styles={stylesTitle} text={textTitle} />
-        <BlockTherapy />
-        <p>Меня зовут <b>{person[0].name}</b>.</p>
-        <p> Я {person[0].description}</p>
-        <p>Образование {person[0].education}</p>
-        <Button
-          className="bt-record"
-          onClick={function(){}}
-          size="md"
-          variant="soft"
-        >
-          Записаться на встречу
-        </Button>
-      </div>
-    </section>
+    <>
+      { person &&
+        <section className="section-person">
+          <div className="container-picture">
+            <Image alt={person[0].name} src="/nata.jpg" layout="fill" />
+          </div>
+          <div className="container-about">
+            <BlockText styles={stylesTitle} text={textTitle} />
+            <BlockTherapy />
+            <p>Меня зовут <b>{person[0].name}</b>.</p>
+            <p className="container-about-p">{person[0].description}</p>
+            <p>Образование: {person[0].education}</p>
+            <Button
+              className="bt-record"
+              onClick={function() {
+              }}
+              size="md"
+              variant="soft"
+            >
+              Записаться на встречу
+            </Button>
+          </div>
+        </section>
+      }
+    </>
   )
 }
 
-export default AboutPerson;
+  export default AboutPerson;

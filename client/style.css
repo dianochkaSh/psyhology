@@ -214,5 +214,10 @@ body{
 }
 .container-therapy .container-therapy-item2 span{
     font-style: italic;
-    color: #32383E;
+    color: rgb(99, 107, 116) !important;
+}
+.container-about-p {
+    text-align: justify;
+    padding: 20px 0px;
+    color: rgb(99, 107, 116);
 }
