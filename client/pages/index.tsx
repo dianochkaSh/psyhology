@@ -36,13 +36,15 @@ const Index = () => {
         {/*block about person*/}
         <AboutPerson />
 
-        {/*block about problem people*/}
-        <ListProblemsRecords />
-
         {/*block about person */}
         <div className="container-text-devided">
           <BlockText styles={styleTextDevided}  text={textDevided} />
         </div>
+
+        {/*block about problem people*/}
+        <ListProblemsRecords />
+
+
 
         {/*block articles */}
         <Articles />

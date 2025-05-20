@@ -1,9 +1,11 @@
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import Image from 'next/image';
-import BlockText from '@/components/BlockText';
 import React from 'react';
 import Button from '@mui/joy/Button';
+
+/* components */
 import BlockTherapy from '@/components/BlockTherapy';
+import BlockText from '@/components/BlockText';
 
 const AboutPerson:React.FC = () => {
   const { person, error} = useTypedSelector(state => state.person);
