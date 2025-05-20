@@ -221,3 +221,6 @@ body{
     padding: 20px 0px;
     color: rgb(99, 107, 116);
 }
+.legend {
+    text-align: center;
+}
