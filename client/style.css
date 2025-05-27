@@ -153,14 +153,6 @@ body{
     height: 700px;
 
 }
-.container-articles .title-article-list{
-    font-weight: 700;
-    font-size: 1.875rem;
-    line-height: 1.33334;
-    letter-spacing: -0.025em;
-    margin-left: 25px;
-    text-align: left;
-}
 .section-problem h2{
     margin-left: 20px;
 }
@@ -223,4 +215,21 @@ body{
 }
 .legend {
     text-align: center;
+}
+.alice-carousel__stage-item { text-align: center}
+.app-body .title-h1 {
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 1.33334;
+    letter-spacing: -.025em;
+    margin-left: 25px;
+    text-align: left;
+}
+.container-certificates {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.alice-carousel {
+    margin-top: 24px;
 }

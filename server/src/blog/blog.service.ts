@@ -14,7 +14,6 @@ export class BlogService {
 
   async create(dto: CreateBlogDto, picture): Promise<Blog> {
     const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
-    console.log(picturePath);
     const post = await this.BlogModel.create({
       ...dto,
       listens: 0,

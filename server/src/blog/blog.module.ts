@@ -5,7 +5,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Blog, BlogSchema } from './schemas/blog.schema';
 import { FileService } from '../file/file.service';
 
-
 @Module({
   controllers: [BlogController],
   providers: [BlogService, FileService],

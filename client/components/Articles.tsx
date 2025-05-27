@@ -8,7 +8,7 @@ import BlockText from '@/components/BlockText';
 const Articles = () => {
   const { posts, error } = useTypedSelector(state => state.blog);
   const textTitle: string = "Статьи: ";
-  const stylesTitle: string = "title-article-list";
+  const stylesTitle: string = "title-h1";
   return (
     <div className="container-articles">
       <BlockText styles={stylesTitle} text={textTitle} />

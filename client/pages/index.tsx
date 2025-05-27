@@ -8,6 +8,8 @@ import BlockText from '@/components/BlockText';
 import ButtonLink from '@/components/ButtonLink';
 import ListProblemsRecords from '@/components/ListProblemsRecords';
 import ContactBlock from '@/components/ContactBlock';
+import AboutPerson from '@/components/AboutPerson';
+import BlockCertifications from '@/components/BlockCertifications';
 
 /*styles*/
 import '../style.css';
@@ -16,10 +18,11 @@ import '../style.css';
 import { fetchProblems } from '@/store/actions-creators/problem';
 import { fetchBlog } from '@/store/actions-creators/blog';
 import { fetchPerson } from '@/store/actions-creators/person';
-import AboutPerson from '@/components/AboutPerson';
+import { fetchCertificate } from '@/store/actions-creators/certificate';
 
 /* constants */
 import { COUNT_ARTICLES_IN_MAIN } from '@/consts/consts';
+
 
 const Index = () => {
  const textDevided: string = "У непрожитых чувств нет срока годности";
@@ -56,6 +59,8 @@ const Index = () => {
         </div>
 
           {/*block sertifications */}
+
+        <BlockCertifications />
       </MainLayout>
     </>
   )
@@ -66,5 +71,6 @@ Index.getInitialProps = wrapper.getInitialAppProps((store) => async (): Promise 
     await store.dispatch(fetchBlog(COUNT_ARTICLES_IN_MAIN));
     await store.dispatch(fetchProblems());
     await store.dispatch(fetchPerson());
+    await store.dispatch(fetchCertificate());
   return  store;
 });

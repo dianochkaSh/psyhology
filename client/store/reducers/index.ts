@@ -5,12 +5,14 @@ import { HYDRATE } from 'next-redux-wrapper';
 import { blogReducer } from './blogReducer';
 import { problemReducer } from './problemReducer';
 import { personReducer } from '@/store/reducers/personReducer';
+import { certificateReducer } from '@/store/reducers/certificateReducer';
 
 
 const rootReducer = combineReducers({
     blog: blogReducer,
     problem: problemReducer,
-    person: personReducer
+    person: personReducer,
+    certificate: certificateReducer,
 });
 export  const reducer = (state, action) => {
   if (action.type === HYDRATE) {

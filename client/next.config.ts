@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
+import { DOMAIN } from '@/consts/consts';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactStrictMode: true,
+  images: {
+    domains: [DOMAIN],
+
+  },
 };
 
 export default nextConfig;
