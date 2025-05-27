@@ -25,7 +25,7 @@ const BlockCertifications:React.FC = () => {
   const textTitle: string = "Сертификаты: ";
   const stylesTitle: string = "title-h1";
   return (
-    <div className="container-certificates">
+    <div className="container-certificates" id="certificates">
       <BlockText styles={stylesTitle} text={textTitle} />
       <AliceCarousel
         disableDotsControls={true}

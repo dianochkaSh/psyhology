@@ -17,10 +17,10 @@ import Router from 'next/router';
 
 
 const pages = [
-  { title: 'Обо мне', href: '/'},
-  { title: 'Блог', href: '/blogs'},
-  { title: 'Подкасты', href: '/podcasts'},
-  { title: 'Достижения', href: '/'},
+  { title: 'Обо мне', href: '/',  id: "about"},
+  { title: 'Блог', href: '/blogs', id: "blog"},
+  { title: 'Основные направления', href: '/work', id: "work"},
+  { title: 'Достижения', href: '/', id: "certificates"},
 ];
 const settings = [
   { title: 'Профиль', href: '#'},
@@ -48,6 +48,10 @@ function ResponsiveAppBar() {
   };
   // const router = useRouter();
 
+  const handleAnchorMenu = (id:string) => {
+    console.log(id);
+    document.getElementById(id).scrollIntoView()
+  }
 
   return (
     <AppBar position="static"  sx={{ bgcolor: '#3E424B' }}>
@@ -100,7 +104,7 @@ function ResponsiveAppBar() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.href} onClick={() => Router.push(setting.href)}>
+                <MenuItem id={"#" + page.id} key={page.href} onClick={() => handleAnchorMenu(page.id)}>
                   <Typography sx={{ textAlign: 'center' }}>{page.title}</Typography>
                 </MenuItem>
               ))}
@@ -129,7 +133,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page.href}
-                onClick={() => Router.push(page.href)}
+                onClick={() => handleAnchorMenu(page.id)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page.title}

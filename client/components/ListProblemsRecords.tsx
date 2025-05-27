@@ -24,7 +24,7 @@ const ListProblemsRecords:React.FC = () => {
     onNextButtonClick
   } = usePrevNextButtons(emblaApi)
   return (
-    <section className="section-problem">
+    <section className="section-problem" id="work">
       <Typography
         color="neutral"
         level="h2"

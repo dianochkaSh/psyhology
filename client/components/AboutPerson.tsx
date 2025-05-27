@@ -7,6 +7,9 @@ import Button from '@mui/joy/Button';
 import BlockTherapy from '@/components/BlockTherapy';
 import BlockText from '@/components/BlockText';
 
+/* constants */
+import { SERVER_URL } from '@/consts/consts';
+
 const AboutPerson:React.FC = () => {
   const { person, error} = useTypedSelector(state => state.person);
   const textTitle: string = "Обо мне: ";
@@ -14,9 +17,9 @@ const AboutPerson:React.FC = () => {
   return (
     <>
       { person &&
-        <section className="section-person">
+        <section className="section-person" id="about">
           <div className="container-picture">
-            <Image alt={person[0].name} src="/nata.jpg" layout="fill" />
+            <Image alt={person[0].name} src={SERVER_URL + person[0].photo} layout="fill" />
           </div>
           <div className="container-about">
             <BlockText styles={stylesTitle} text={textTitle} />

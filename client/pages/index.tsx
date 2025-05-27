@@ -28,11 +28,14 @@ const Index = () => {
  const textDevided: string = "У непрожитых чувств нет срока годности";
  const styleTextDevided:string = "title-blog";
  const titleBt:string = "Увидеть больше записей";
+  const textTitle: string = "Квалифицированная \n психологическая \n помощь";
+  const stylesTitle: string = "main-title";
 
   return(
     <>
       <MainLayout>
         <section className="section-img">
+          <BlockText styles={stylesTitle} text={textTitle} />
           <ContactBlock />
         </section>
 
@@ -47,15 +50,15 @@ const Index = () => {
         {/*block about problem people*/}
         <ListProblemsRecords />
 
-
-
         {/*block articles */}
-        <Articles />
-        <div className="container-bt-all-articles">
-          <ButtonLink
-            titleText={titleBt}
-            urlText="/blogs"
-          />
+        <div id="blog">
+          <Articles />
+          <div className="container-bt-all-articles">
+            <ButtonLink
+              titleText={titleBt}
+              urlText="/blogs"
+            />
+          </div>
         </div>
 
           {/*block sertifications */}
