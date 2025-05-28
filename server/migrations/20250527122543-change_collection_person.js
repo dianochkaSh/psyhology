@@ -6,21 +6,15 @@ module.exports = {
    */
   async up(db, client) {
     await db.collection('people').updateMany({},
-      { $set:
+      {
+        $set:
           {
             phone: "+79286111360",
             time_consultation : "90 минут",
             format_consultation : "Очно и онлайн"
           }
 
-
       });
-
-    //
-    //   // .insertOne({"phone": "+79286111360" });
-    // await db.collection('people').insertOne({"time_consultation" : "90 минут"});
-    // await db.collection('people').insertOne({"format_consultation" : "Очно и онлайн "});
-
   },
 
   /**

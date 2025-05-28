@@ -37,4 +37,7 @@ export class PersonService {
     }
     return post;
   }
+  deletePerson(id: string){
+    return this.PersonModel.findByIdAndDelete(id);
+  }
 }

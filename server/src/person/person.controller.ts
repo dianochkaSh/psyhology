@@ -1,6 +1,6 @@
 import {
   Body,
-  Controller,
+  Controller, Delete,
   Get,
   Param,
   Post,
@@ -31,5 +31,9 @@ export class PersonController {
   @Put(':id')
   updatePersonInformation(@Param('id') id: string, @Body() updatePersonDto: UpdatePersonDto){
     return this.personService.updateRecordPerson(id, updatePersonDto);
+  }
+  @Delete(':id')
+  deletePersonInformation(@Param('id') id: string) {
+    return this.personService.deletePerson(id);
   }
 }

@@ -10,23 +10,27 @@ import BlockText from '@/components/BlockText';
 /* constants */
 import { SERVER_URL } from '@/consts/consts';
 
+/* types */
+import { IPerson } from '@/types/person';
+
 const AboutPerson:React.FC = () => {
   const { person, error} = useTypedSelector(state => state.person);
   const textTitle: string = "Обо мне: ";
   const stylesTitle: string = "title-person-block";
+  const user : IPerson | null = person[0] !== undefined ? person[0] : null;
   return (
     <>
-      { person &&
+      { user!== null &&
         <section className="section-person" id="about">
           <div className="container-picture">
-            <Image alt={person[0].name} src={SERVER_URL + person[0].photo} layout="fill" />
+            <Image alt={user.name} src={SERVER_URL + user.photo} layout="fill" />
           </div>
           <div className="container-about">
             <BlockText styles={stylesTitle} text={textTitle} />
-            <BlockTherapy />
-            <p>Меня зовут <b>{person[0].name}</b>.</p>
-            <p className="container-about-p">{person[0].description}</p>
-            <p>Образование: {person[0].education}</p>
+            <BlockTherapy time={user.time_consultation} format={user.format_consultation} />
+            <p>Меня зовут <b>{user.name}</b>.</p>
+            <p className="container-about-p">{user.description}</p>
+            <p>Образование: {user.education}</p>
             <Button
               className="bt-record"
               onClick={function() {

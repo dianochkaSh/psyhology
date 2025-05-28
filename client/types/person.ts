@@ -3,7 +3,10 @@ export interface IPerson {
   name: string,
   education: string,
   description: string,
-  photo: string
+  photo: string,
+  phone: string,
+  format_consultation: string,
+  time_consultation: string
 }
 
 export interface PersonState {

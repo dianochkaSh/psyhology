@@ -1,13 +1,19 @@
 import React from 'react';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { IPerson } from '@/types/person';
 
 const ContactBlock:React.FC = () => {
+  const { person, error } = useTypedSelector(state => state.person);
+  const user: IPerson | null = person!== undefined ? person[0] : null;
   return (
     <section className="section-contact">
-      <div>
-        <h3>Контактная информация</h3>
-        <p>Запись по телефону:</p>
-        <span><b>+79286111360</b></span>
-      </div>
+      { user !== null &&
+        <div>
+          <h3>Контактная информация</h3>
+          <p>Запись по телефону:</p>
+          <span><b>{user.phone}</b></span>
+        </div>
+      }
     </section>
   )
 }
