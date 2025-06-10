@@ -4,10 +4,10 @@ import { IPerson } from '@/types/person';
 
 const ContactBlock:React.FC = () => {
   const { person, error } = useTypedSelector(state => state.person);
-  const user: IPerson | null = person!== undefined ? person[0] : null;
+  const user: IPerson | null = person[0] !== undefined ? person[0] : null;
   return (
     <section className="section-contact">
-      { user !== null &&
+      { (user !== null && true)  &&
         <div>
           <h3>Контактная информация</h3>
           <p>Запись по телефону:</p>

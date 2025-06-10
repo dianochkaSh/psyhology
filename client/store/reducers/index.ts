@@ -6,6 +6,8 @@ import { blogReducer } from './blogReducer';
 import { problemReducer } from './problemReducer';
 import { personReducer } from '@/store/reducers/personReducer';
 import { certificateReducer } from '@/store/reducers/certificateReducer';
+import { modalRecordReducer } from '@/store/reducers/modalRecordReducer';
+import { formAppointmentReducer } from '@/store/reducers/formAppointmentReducer';
 
 
 const rootReducer = combineReducers({
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
     problem: problemReducer,
     person: personReducer,
     certificate: certificateReducer,
+    modalWindowRecord: modalRecordReducer,
+    appointmentForm : formAppointmentReducer
 });
 export  const reducer = (state, action) => {
   if (action.type === HYDRATE) {

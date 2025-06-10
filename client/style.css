@@ -245,3 +245,24 @@ body{
     padding: 30px;
     backdrop-filter: blur(1px);
 }
+.about-text-modal {
+    font-size: 0.8rem;
+    color: #636b74 !important;
+}
+.text-agreement {
+    font-size: 0.7rem;
+    color: #636b74 !important;
+}
+.notification-modal {
+    margin: 0 auto;
+    background-color: #ffff !important;
+}
+.notification-modal img {
+    margin: 0 auto;
+}
+.notification-modal p{
+    font-size: 0.85rem;
+    text-align: center;
+    word-break: break-word;
+    white-space: pre-line;
+}

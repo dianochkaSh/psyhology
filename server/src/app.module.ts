@@ -10,6 +10,7 @@ import { BlogModule } from './blog/blog.module';
 import { PodcastsModule } from './podcasts/podcasts.module';
 import { PersonModule } from './person/person.module';
 import { CertificateModule } from './certificate/certificate.module';
+import { TreatmentModule } from './treatment/treatment.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { CertificateModule } from './certificate/certificate.module';
     FileModule,
     ProblemModule,
     CertificateModule,
+    TreatmentModule,
   ],
 })
 export class AppModule {}
