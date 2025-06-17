@@ -5,7 +5,7 @@ module.exports = {
    * @returns {Promise<void>}
    */
   async up(db, client) {
-    await db.collection('people').updateMany({},
+    await db.collection('peoples').updateMany({},
       {
         $set:
           {
@@ -23,8 +23,8 @@ module.exports = {
    * @returns {Promise<void>}
    */
   async down(db, client) {
-    await db.collection('people').deleteOne({"phone": "+79286111360" });
-    await db.collection('people').deleteOne({"time_consultation" : "90 минут"});
-    await db.collection('people').deleteOne({"format_consultation" : "Очно и онлайн "});
+    await db.collection('peoples').deleteOne({"phone": "+79286111360" });
+    await db.collection('peoples').deleteOne({"time_consultation" : "90 минут"});
+    await db.collection('peoples').deleteOne({"format_consultation" : "Очно и онлайн "});
   }
 };
