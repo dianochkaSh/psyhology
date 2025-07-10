@@ -18,3 +18,20 @@ export const fetchBlog = (countEl:number) => {
     }
   };
 };
+
+export const getOneArticle = (id: string) => {
+
+  return async (dispatch: Dispatch<BlogAction>) => {
+    try  {
+      const response = await axios.get(SERVER_URL + 'blogs/'  + id);
+      dispatch({ type: BlogActionTypes.FETCH_ONE_ARTICLE, payload: response.data})
+    }
+    catch (e) {
+      dispatch({
+        type: BlogActionTypes.FETCH_ONE_ARTICLE_ERROR,
+        payload: e.message
+      })
+    }
+  }
+
+}

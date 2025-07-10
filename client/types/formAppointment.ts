@@ -16,7 +16,8 @@ export enum FormAppointmentTypes {
   ADD_FORM_APPOINTMENT_ERROR = 'ADD_FORM_APPOINTMENT_ERROR',
   EDIT_FIELD = 'EDIT_FIELD',
   CLEAR_FIELD = 'CLEAR_FIELD',
-  UPDATE_CHECKBOX = 'UPDATE_CHECKBOX'
+  UPDATE_CHECKBOX = 'UPDATE_CHECKBOX',
+  CLEAR_ERROR = 'CLEAR_ERROR'
 }
 
 interface UpdateFromAppointmentAction {
@@ -36,6 +37,10 @@ interface AddFormAppointmentErrorAction {
   payload: string
 }
 
+interface ClearErrorFornAppointment {
+  type: FormAppointmentTypes.CLEAR_ERROR
+}
+
 interface ClearFormAppointmentAction {
   type: FormAppointmentTypes.CLEAR_FIELD,
   payload: FormAppointment
@@ -45,4 +50,9 @@ interface UpdateCheckbox {
   payload: boolean
 }
 
-export type FormAppointmentAction  = UpdateFromAppointmentAction | AddFormAppointmentErrorAction | AddFormAppointmentAction | ClearFormAppointmentAction | UpdateCheckbox;
+export type FormAppointmentAction  = UpdateFromAppointmentAction |
+                                      AddFormAppointmentErrorAction |
+                                      AddFormAppointmentAction |
+                                      ClearFormAppointmentAction |
+                                      UpdateCheckbox |
+                                      ClearErrorFornAppointment;

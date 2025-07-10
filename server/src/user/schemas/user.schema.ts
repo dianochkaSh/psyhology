@@ -5,13 +5,13 @@ import { IsEmail, IsString } from '@nestjs/class-validator';
 export type UserDocument = HydratedDocument<User>;
 
 export class User {
-  @IsString()
+  @Prop()
   login: string;
 
-  @IsString()
+  @Prop()
   password: string;
 
-  @IsEmail()
+  @Prop()
   email: string;
 }
 

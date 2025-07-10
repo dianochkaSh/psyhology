@@ -15,13 +15,11 @@ export const formAppointmentReducer = (state = initialState, action: FormAppoint
 
   switch(action.type) {
     case FormAppointmentTypes.ADD_FORM_APPOINTMENT:
-      return { error: '', formAppointment: action.payload
-      };
+      return { ...state, error: '', formAppointment: action.payload };
     case FormAppointmentTypes.ADD_FORM_APPOINTMENT_ERROR:
-      return {...state, error: 'Произошла ошибка' }
-    case FormAppointmentTypes.EDIT_FIELD: {
+      return {...state, error: action.payload }
+    case FormAppointmentTypes.EDIT_FIELD:
       return { ...state, formAppointment: action.payload }
-    }
     case FormAppointmentTypes.CLEAR_FIELD:
       return { ...state,
        formAppointment : {
@@ -32,10 +30,10 @@ export const formAppointmentReducer = (state = initialState, action: FormAppoint
           isWork: false
         }
       }
-    case FormAppointmentTypes.UPDATE_CHECKBOX : {
-      return {... state, agreement: action.payload}
-    }
-
+    case FormAppointmentTypes.UPDATE_CHECKBOX :
+      return {... state, agreement: action.payload }
+    case FormAppointmentTypes.CLEAR_ERROR :
+      return  { ... state, error: ''}
     default:
       return state;
 

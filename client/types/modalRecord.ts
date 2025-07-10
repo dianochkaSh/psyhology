@@ -1,14 +1,17 @@
 
 export interface ModalRecordState {
   isOpen: boolean,
-  isOpenNotification : false
+  isOpenNotification: boolean
+  isOpenSignUpWindow: boolean
 }
 
 export enum ModalRecordTypes {
   MODAL_OPEN = "MODAL_OPEN",
   MODAL_CLOSE = "MODAL_CLOSE",
   OPEN_NOTIFICATION = "OPEN_NOTIFICATION",
-  CLOSE_NOTIFICATION = "CLOSE_NOTIFICATION"
+  CLOSE_NOTIFICATION = "CLOSE_NOTIFICATION",
+  OPEN_SIGNUP_WINDOW = "OPEN_SIGNUP_WINDOW",
+  CLOSE_SIGNUP_WINDOW = "CLOSE_SIGNUP_WINDOW",
 }
 
 interface FetchModalRecordOpenAction {
@@ -23,5 +26,16 @@ interface FetchModalRecordCloseAction {
 interface CloseNotificationAction {
   type:ModalRecordTypes.CLOSE_NOTIFICATION
 }
+interface FetchOpenSignUpWindow {
+  type: ModalRecordTypes.OPEN_SIGNUP_WINDOW
+}
+interface FetchCloseSignUpWindow {
+  type: ModalRecordTypes.CLOSE_SIGNUP_WINDOW
+}
 
-export type ModalRecordAction = FetchModalRecordOpenAction | FetchModalRecordCloseAction | ShowNotificationsAction | CloseNotificationAction;
+export type ModalRecordAction = FetchModalRecordOpenAction |
+                                FetchModalRecordCloseAction |
+                                ShowNotificationsAction |
+                                CloseNotificationAction |
+                                FetchOpenSignUpWindow |
+                                FetchCloseSignUpWindow;

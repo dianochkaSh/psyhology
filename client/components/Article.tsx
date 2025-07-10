@@ -3,6 +3,7 @@ import Card from '@mui/joy/Card' ;
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import { AspectRatio, CardActions, CardOverflow, Link } from '@mui/joy';
+import { useRouter } from 'next/navigation';
 
 /* types */
 import { IBlog } from '@/types/blog';
@@ -34,7 +35,7 @@ const Article : React.FC<BlogPost> = ({ post }) =>  {
       </CardContent>
       <CardActions buttonFlex="0 1 120px">
         <Link
-          href="#basics"
+          href={`/blogs/${post._id}`}
           color="neutral"
           underline="hover"
         >

@@ -17,7 +17,12 @@ import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 /* actions */
 import { closeModal, openNotificationModal } from '@/store/actions-creators/modalRecord';
-import { addAppointment, handleCheckboxAction, updateFieldForm } from '@/store/actions-creators/formAppointment';
+import {
+  addAppointment,
+  clearErrorFormAppointment,
+  handleCheckboxAction,
+  updateFieldForm,
+} from '@/store/actions-creators/formAppointment';
 
 /* types */
 import { FormAppointment } from '@/types/formAppointment';
@@ -28,6 +33,7 @@ const { formAppointment, agreement,  error} = useTypedSelector(state => state.ap
   const { isOpen } = useTypedSelector(state=> state.modalWindowRecord);
   const dispatch = useDispatch();
   const handleModalClose = () => {
+    dispatch(clearErrorFormAppointment());
     Object.keys(formAppointment).forEach(function(key, index) {
       dispatch(updateFieldForm(key, ''));
     });
@@ -35,6 +41,7 @@ const { formAppointment, agreement,  error} = useTypedSelector(state => state.ap
     dispatch(closeModal());
   }
   const handleValueField = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    dispatch(clearErrorFormAppointment());
     dispatch(updateFieldForm(event.currentTarget.name, event.currentTarget.value ));
   }
   const handleSendRequest = (event: React.FormEvent<HTMLFormElement>) => {
@@ -105,6 +112,7 @@ const { formAppointment, agreement,  error} = useTypedSelector(state => state.ap
             <p className="about-text-modal">
               Свяжусь с вами в ближайщее время, для уточнения деталей и записи вас на консультацию
             </p>
+            { error && <div>{error}</div>}
           </ModalDialog>
 
 

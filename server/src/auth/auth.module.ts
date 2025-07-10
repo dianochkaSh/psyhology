@@ -5,10 +5,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { LocalStrategy } from './local.strategy';
 import { User, UserSchema } from '../user/schemas/user.schema';
 import { UserService } from '../user/user.service';
+import { Session } from './session';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, UserService],
+  providers: [AuthService, LocalStrategy, Session, UserService],
   imports: [
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
   ],

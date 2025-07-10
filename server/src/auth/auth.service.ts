@@ -1,8 +1,9 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { HttpStatus, Injectable, Req, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserDocument } from '../user/schemas/user.schema';
 import { UserService } from '../user/user.service';
+import { Request, Response } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -18,5 +19,20 @@ export class AuthService {
     if (user && user.password === password) {
       return user;
     }
+  }
+  async login(@Req() request: Request): Promise<any> {
+    console.log('auth service login');
+    return {
+      message: 'Login successful',
+      statusCode: HttpStatus.OK,
+    };
+  }
+  async logout(request: Request): Promise<any> {
+    request.session.destroy(() => {
+      return {
+        message: 'Logout successful',
+        statusCode: HttpStatus.OK,
+      };
+    });
   }
 }

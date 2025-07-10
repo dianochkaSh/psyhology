@@ -12,3 +12,10 @@ export const openNotificationModal = () => {
 export const closeNotification = () => {
   return { type: ModalRecordTypes.CLOSE_NOTIFICATION }
 }
+ export  const openSignUpModalWindow = () => {
+  return { type: ModalRecordTypes.OPEN_SIGNUP_WINDOW }
+ }
+
+ export const closeSignUpModal = () => {
+  return { type: ModalRecordTypes.CLOSE_SIGNUP_WINDOW }
+ }

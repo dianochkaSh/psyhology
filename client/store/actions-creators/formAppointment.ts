@@ -16,7 +16,7 @@ export const addAppointment = (data:FormAppointment) => {
     }catch (e) {
       dispatch({
         type: FormAppointmentTypes.ADD_FORM_APPOINTMENT_ERROR,
-        payload: 'Произошла ошибка',
+        payload: e.message,
       });
     }
 
@@ -38,5 +38,11 @@ export const handleCheckboxAction = (value:boolean) => {
   return {
     type: FormAppointmentTypes.UPDATE_CHECKBOX,
     payload: value
+  }
+}
+
+export const clearErrorFormAppointment = () => {
+  return {
+    type: FormAppointmentTypes.CLEAR_ERROR
   }
 }

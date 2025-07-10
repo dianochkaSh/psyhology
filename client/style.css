@@ -266,3 +266,29 @@ body{
     word-break: break-word;
     white-space: pre-line;
 }
+.container-one-article {
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+.article-content{
+    width: 1170px;
+    margin: 0 auto;
+}
+.article-image {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+}
+.article-image img {
+    border-radius: 8px;
+}
+.article-title {
+    font-size: 2.335em;
+    margin-bottom: 10px;
+    color: #000000;
+}
+.article-content {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

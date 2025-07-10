@@ -22,15 +22,16 @@ import { fetchCertificate } from '@/store/actions-creators/certificate';
 
 /* constants */
 import { COUNT_ARTICLES_IN_MAIN } from '@/consts/consts';
-
+import { useTypedSelector } from '@/hooks/useTypedSelector';
+import ModalSignUpWindow from '@/components/ModalSignUpWindow';
 
 const Index = () => {
- const textDevided: string = "У непрожитых чувств нет срока годности";
- const styleTextDevided:string = "title-blog";
- const titleBt:string = "Увидеть больше записей";
+  const textDevided: string = "У непрожитых чувств нет срока годности";
+  const styleTextDevided:string = "title-blog";
+  const titleBt:string = "Увидеть больше записей";
   const textTitle: string = "Квалифицированная \n психологическая \n помощь";
   const stylesTitle: string = "main-title";
-
+  const { isOpenSignUpWindow } = useTypedSelector(state => state.modalWindowRecord);
   return(
     <>
       <MainLayout>
@@ -64,6 +65,7 @@ const Index = () => {
           {/*block sertifications */}
 
         <BlockCertifications />
+        { isOpenSignUpWindow && <ModalSignUpWindow />}
       </MainLayout>
     </>
   )
