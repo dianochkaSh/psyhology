@@ -13,6 +13,7 @@ interface BlogPost {
 }
 
 const Article : React.FC<BlogPost> = ({ post }) =>  {
+  const description = (post  !== undefined && post.description !==  undefined ) ?  post.description.slice(0,115) : '';
   return (
     <Card className="card-article" sx={{ width: 320, marginBottom: 3, marginTop: 3 }}>
       <CardOverflow>
@@ -26,11 +27,13 @@ const Article : React.FC<BlogPost> = ({ post }) =>  {
         </AspectRatio>
       </CardOverflow>
       <div>
-        <Typography level="title-lg">{post.title}</Typography>
+        <Typography sx={{ justifyContent: 'left' }} level="title-lg">{post.title}</Typography>
       </div>
       <CardContent orientation="horizontal">
         <div>
-          <Typography level="body-xs">{post.description}</Typography>
+          <Typography
+            sx={{ justifyContent: 'justify' }}
+            level="body-xs">{description + '...'}</Typography>
         </div>
       </CardContent>
       <CardActions buttonFlex="0 1 120px">

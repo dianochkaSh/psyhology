@@ -15,6 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { ListItem } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { openSignUpModalWindow } from '@/store/actions-creators/modalRecord';
+import { useRouter } from 'next/navigation';
 
 const pages = [
   { title: 'Обо мне', href: '/',  id: "about"},
@@ -30,7 +31,7 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const dispatch = useDispatch();
-
+  const router = useRouter();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     console.log(event.currentTarget);
@@ -47,11 +48,11 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  // const router = useRouter();
 
   const handleAnchorMenu = (id:string) => {
-    document.getElementById(id).scrollIntoView()
+      router.push('/#'+ id);
   }
+
   const openWindowSignUp = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     dispatch(openSignUpModalWindow());
@@ -66,7 +67,7 @@ function ResponsiveAppBar() {
               variant="h6"
               noWrap
               component="a"
-              href="#app-bar-with-responsive-menu"
+              href="/"
               sx={{
                 mr: 6,
                 display: { xs: 'none', md: 'flex' },

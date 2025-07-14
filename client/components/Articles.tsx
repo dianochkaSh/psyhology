@@ -5,10 +5,16 @@ import { useTypedSelector } from '@/hooks/useTypedSelector';
 /*components*/
 import BlockText from '@/components/BlockText';
 
+/* styles */
+import '../style.css';
+
+
 const Articles = () => {
   const { posts, error } = useTypedSelector(state => state.blog);
+
   const textTitle: string = "Статьи: ";
   const stylesTitle: string = "title-h1";
+  console.log(stylesTitle);
   return (
     <div className="container-articles">
       <BlockText styles={stylesTitle} text={textTitle} />

@@ -282,6 +282,8 @@ body{
 }
 .article-image img {
     border-radius: 8px;
+    height: auto;
+    max-width: 100%;
 }
 .article-title {
     font-size: 2.335em;
@@ -291,4 +293,8 @@ body{
 .article-content {
     margin-top: 10px;
     margin-bottom: 20px;
+    letter-spacing: 0.02rem;
+    color: #595f5f;
+    line-height: 1.4;
+    text-align: justify;
 }

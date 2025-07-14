@@ -3,21 +3,40 @@ import { wrapper } from '@/store';
 import { getOneArticle } from '@/store/actions-creators/blog';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { GetServerSideProps } from 'next';
-import MainLayout from '@/layouts/MainLayout';
+
+/* constant */
 import { SERVER_URL } from '@/consts/consts';
 
-/*styles*/
+/* styles */
 import '../../style.css';
+
+/* components */
+import Breadcrumbs from '@/components/Breadcrumbs';
+
+ /* layouts */
+import MainLayout from '@/layouts/MainLayout';
 
 const ArticlePage: React.FC = () => {
   const { article } = useTypedSelector(state => state.blog);
+  const listBreadcrumbs = [
+    {
+      title: "Главная",
+      href: "/"
+    },
+    {
+      title: "Блог",
+      href: "/blogs"
+    },
+  ];
+
   return (
     <MainLayout>
+      <Breadcrumbs titlePage={article.title} listBreadcrumbs={listBreadcrumbs} />
       <div className="container-one-article">
         <article className="article-content">
           <div className="article-image">
-            <img height={575}
-                 width={925}
+            <img height={578}
+                 width='auto'
                  src={SERVER_URL + article.picture}
                  role="presentation" />
           </div>
