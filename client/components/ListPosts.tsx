@@ -12,6 +12,7 @@ const ListPosts :React.FC<BlogPostsProps> = ({ posts }) => {
   return(
     <Grid container
       direction="row"
+          className="articles-list"
       sx={{
         justifyContent: "space-around",
         alignItems: "flex-start",
