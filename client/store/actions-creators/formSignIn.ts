@@ -27,8 +27,7 @@ export const signIn = (data: FormSignIn) => {
   return async (dispatch: Dispatch<FormSignInAction>) => {
     try {
       const response = await axios.post(SERVER_URL + 'auth/login', data);
-      console.log(response.data);
-      console.log(response);
+      localStorage.setItem('access_token', response.data.access_token)
       dispatch({ type: FormSignInType.FETCH_SIGN_IN, payload: response.data});
 
     } catch (e) {
@@ -38,5 +37,29 @@ export const signIn = (data: FormSignIn) => {
       })
     }
 
+  }
+}
+export const updateValueIsAuthenticated = (isAuth: boolean) => {
+  return {
+    type: FormSignInType.CHANGE_IS_AUTHENTICATED,
+    payload: {  isAuthenticated: isAuth }
+  }
+}
+export const logoutUser = () => {
+  const token = window.localStorage.getItem("access_token");
+  return async (dispath: Dispatch<FormSignInAction>) => {
+    try {
+      const response = await axios.post(SERVER_URL + 'auth/logout', data);
+
+      dispath({
+        type: FormSignInType.CHANGE_IS_AUTHENTICATED,
+        payload: {
+          isAuthenticated: false
+        }
+      })
+    }
+    catch (e) {
+
+    }
   }
 }

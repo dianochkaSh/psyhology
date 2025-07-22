@@ -5,16 +5,17 @@ const initialState : FormSignInState = {
     login: '',
     password: ''
   },
-  error : ''
+  error : '',
+  isAuthenticated: false
 
 }
 
 export const formSignInReducer = (state = initialState, action: FormSignInAction): FormSignInState => {
   switch (action.type) {
     case FormSignInType.CHANGE_VALUE_FIELD_FORM:
-      return { error: '', formSignIn: action.payload };
+      return { ...state, error: '', formSignIn: action.payload };
     case FormSignInType.CLEAR_FIELD:
-      return  { error: '',
+      return  { ...state, error: '',
         formSignIn:  {
           login: '',
           password: ''
@@ -26,7 +27,9 @@ export const formSignInReducer = (state = initialState, action: FormSignInAction
       return { ...state, error: '' }
     }
     case FormSignInType.FETCH_SIGN_IN:
-      return { error: '', formSignIn: action.payload}
+      return { ...state, error: '', formSignIn: action.payload}
+    case FormSignInType.CHANGE_IS_AUTHENTICATED:
+      return {...state, error: '', isAuthenticated: action.payload}
     default:
       return  state;
   }

@@ -10,6 +10,7 @@ import ListProblemsRecords from '@/components/ListProblemsRecords';
 import ContactBlock from '@/components/ContactBlock';
 import AboutPerson from '@/components/AboutPerson';
 import BlockCertifications from '@/components/BlockCertifications';
+import ModalSignUpWindow from '@/components/ModalSignUpWindow';
 
 /*styles*/
 import '../style.css';
@@ -23,7 +24,7 @@ import { fetchCertificate } from '@/store/actions-creators/certificate';
 /* constants */
 import { COUNT_ARTICLES_IN_MAIN } from '@/consts/consts';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
-import ModalSignUpWindow from '@/components/ModalSignUpWindow';
+
 
 const Index = () => {
   const textDevided: string = "У непрожитых чувств нет срока годности";

@@ -1,4 +1,5 @@
 import AdminLayout from '@/layouts/AdminLayout';
+import isAuth from '@/components/isAuth';
 
 const Admin = () => {
   return (
@@ -10,4 +11,4 @@ const Admin = () => {
   )
 }
 
-export default Admin;
+export default  isAuth(Admin);

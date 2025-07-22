@@ -20,7 +20,6 @@ import { openModal } from '@/store/actions-creators/modalRecord';
 
 /* hooks */
 import { useTypedSelector } from '@/hooks/useTypedSelector';
-import ModalSignUpWindow from '@/components/ModalSignUpWindow';
 
 
 const AboutPerson:React.FC = () => {

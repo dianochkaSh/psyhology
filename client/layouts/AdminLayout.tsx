@@ -5,6 +5,8 @@ interface IAdminLayout {
 }
 
 const AdminLayout:React.FC<IAdminLayout> = ({children}) => {
+
+
   return (
     <div className="app-admin-body">
       <p>admin page</p>

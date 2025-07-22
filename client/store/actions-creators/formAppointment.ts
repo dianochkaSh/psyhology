@@ -46,3 +46,4 @@ export const clearErrorFormAppointment = () => {
     type: FormAppointmentTypes.CLEAR_ERROR
   }
 }
+

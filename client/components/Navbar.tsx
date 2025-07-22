@@ -16,6 +16,9 @@ import { ListItem } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { openSignUpModalWindow } from '@/store/actions-creators/modalRecord';
 import { useRouter } from 'next/navigation';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { useEffect, useLayoutEffect } from 'react';
+import { logoutUser, updateValueIsAuthenticated } from '@/store/actions-creators/formSignIn';
 
 const pages = [
   { title: 'Обо мне', href: '/',  id: "about"},
@@ -27,14 +30,23 @@ const settings = [
   { title: 'Войти', href: '#'}
 ];
 
-function ResponsiveAppBar() {
+const  ResponsiveAppBar:React.FC = ( ) => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const { isAuthenticated } = useTypedSelector(state => state.signInForm);
   const dispatch = useDispatch();
   const router = useRouter();
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isAuth = window.localStorage.getItem("access_token") ? true : false;
+      dispatch(updateValueIsAuthenticated(isAuth));
+    }
+  }, []);
+
+
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    console.log(event.currentTarget);
+
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -57,6 +69,12 @@ function ResponsiveAppBar() {
     event.preventDefault();
     dispatch(openSignUpModalWindow());
   }
+  const exitAdminPart = (event: React.MouseEvent<HTMLElement>) =>{
+    event.preventDefault();
+    dispatch(logoutUser());
+
+  }
+
 
   return (
       <AppBar position="static"  sx={{ bgcolor: '#3E424B' }}>
@@ -146,35 +164,36 @@ function ResponsiveAppBar() {
               ))}
             </Box>
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
+              {/*<Tooltip title="Open settings">*/}
+              {/*  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>*/}
+              {/*    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />*/}
+              {/*  </IconButton>*/}
+              {/*</Tooltip>*/}
+              {/*<Menu*/}
+              {/*  sx={{ mt: '45px' }}*/}
+              {/*  id="menu-appbar"*/}
 
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
+              {/*  anchorOrigin={{*/}
+              {/*    vertical: 'top',*/}
+              {/*    horizontal: 'right',*/}
+              {/*  }}*/}
+              {/*  keepMounted*/}
+              {/*  transformOrigin={{*/}
+              {/*    vertical: 'top',*/}
+              {/*    horizontal: 'right',*/}
+              {/*  }}*/}
+              {/*  open={Boolean(anchorElUser)}*/}
+              {/*  onClose={handleCloseUserMenu}*/}
+              {/*>*/}
 
-                {settings.map((setting) => (
-                  <ListItem key={setting.title} onClick={(event) => openWindowSignUp(event)}>
-                    <Typography sx={{ textAlign: 'center' }}>{setting.title}</Typography>
-                  </ListItem>
-                ))}o
-              </Menu>
-              <Button onClick={openWindowSignUp}>Войти</Button>
+              {/*  {settings.map((setting) => (*/}
+              {/*    <ListItem key={setting.title} onClick={(event) => openWindowSignUp(event)}>*/}
+              {/*      <Typography sx={{ textAlign: 'center' }}>{setting.title}</Typography>*/}
+              {/*    </ListItem>*/}
+              {/*  ))}o*/}
+              {/*</Menu>*/}
+              <Button onClick={isAuthenticated ? exitAdminPart : openWindowSignUp}>{ isAuthenticated ? "Выйти"  : "Войти" }</Button>
+
             </Box>
           </Toolbar>
 

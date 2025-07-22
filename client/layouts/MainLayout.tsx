@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import Navbar from '@/components/Navbar';
 
 interface IMainLayout {
@@ -6,7 +6,7 @@ interface IMainLayout {
 }
 
 
-const MainLayout:React.FC<IMainLayout> = ({ children}) =>{
+const MainLayout:React.FC<IMainLayout> = ({ children}) => {
   return (
     <div className="app-body">
       <Navbar />
