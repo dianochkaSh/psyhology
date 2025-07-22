@@ -1,25 +1,25 @@
 import {
   Controller,
   Post,
-  UseGuards,
-  Req, Body,
+  Response,
+  Req,
+  Body,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UserService } from '../user/user.service';
-import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
 import { CreateUserDto } from '../user/dto/create-user.dto';
-import { User } from '../user/schemas/user.schema';
 
 @Controller('/auth')
 export class AuthController {
-  constructor(private authService: AuthService, private userService: UserService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+  ) {}
 
-  @UseGuards(AuthGuard('local'))
   @Post('login')
-  login(@Req() req): Promise<any> {
-    console.log('login-controller');
-    return this.authService.login(req);
+  login(@Body() dto: CreateUserDto, @Response({ passthrough: true }) res){
+    return this.authService.login(dto, res);
   }
 
   @Post('logout')
