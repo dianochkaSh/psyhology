@@ -29,7 +29,7 @@ export const formSignInReducer = (state = initialState, action: FormSignInAction
     case FormSignInType.FETCH_SIGN_IN:
       return { ...state, error: '', formSignIn: action.payload}
     case FormSignInType.CHANGE_IS_AUTHENTICATED:
-      return {...state, error: '', isAuthenticated: action.payload}
+      return {...state, error: '', isAuthenticated: action.payload.isAuthenticated}
     default:
       return  state;
   }

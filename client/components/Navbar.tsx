@@ -18,7 +18,7 @@ import { openSignUpModalWindow } from '@/store/actions-creators/modalRecord';
 import { useRouter } from 'next/navigation';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { useEffect, useLayoutEffect } from 'react';
-import { logoutUser, updateValueIsAuthenticated } from '@/store/actions-creators/formSignIn';
+import { updateValueIsAuthenticated } from '@/store/actions-creators/formSignIn';
 
 const pages = [
   { title: 'Обо мне', href: '/',  id: "about"},
@@ -34,13 +34,16 @@ const  ResponsiveAppBar:React.FC = ( ) => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const { isAuthenticated } = useTypedSelector(state => state.signInForm);
+
   const dispatch = useDispatch();
   const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const isAuth = window.localStorage.getItem("access_token") ? true : false;
-      dispatch(updateValueIsAuthenticated(isAuth));
+      if(isAuth) {
+        dispatch(updateValueIsAuthenticated(isAuth));
+      }
     }
   }, []);
 
@@ -69,9 +72,9 @@ const  ResponsiveAppBar:React.FC = ( ) => {
     event.preventDefault();
     dispatch(openSignUpModalWindow());
   }
-  const exitAdminPart = (event: React.MouseEvent<HTMLElement>) =>{
-    event.preventDefault();
-    dispatch(logoutUser());
+  const exitAdminPart = (event: React.MouseEvent<HTMLElement>) => {
+    window.localStorage.removeItem('access_token');
+    dispatch(updateValueIsAuthenticated(false));
 
   }
 
@@ -79,6 +82,7 @@ const  ResponsiveAppBar:React.FC = ( ) => {
   return (
       <AppBar position="static"  sx={{ bgcolor: '#3E424B' }}>
         <Container maxWidth="xl">
+
           <Toolbar disableGutters>
             <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography
@@ -127,7 +131,7 @@ const  ResponsiveAppBar:React.FC = ( ) => {
                 sx={{ display: { xs: 'block', md: 'none' } }}
               >
                 {pages.map((page) => (
-                  <MenuItem id={"#" + page.id} key={page.href} onClick={() => handleAnchorMenu(page.id)}>
+                  <MenuItem id={'#' + page.id} key={page.href} onClick={() => handleAnchorMenu(page.id)}>
                     <Typography sx={{ textAlign: 'center' }}>{page.title}</Typography>
                   </MenuItem>
                 ))}
@@ -192,13 +196,13 @@ const  ResponsiveAppBar:React.FC = ( ) => {
               {/*    </ListItem>*/}
               {/*  ))}o*/}
               {/*</Menu>*/}
-              <Button onClick={isAuthenticated ? exitAdminPart : openWindowSignUp}>{ isAuthenticated ? "Выйти"  : "Войти" }</Button>
+              <Button
+                onClick={isAuthenticated ? exitAdminPart : openWindowSignUp}>{isAuthenticated ? 'Выйти' : 'Войти'}</Button>
 
             </Box>
           </Toolbar>
-
         </Container>
       </AppBar>
-    );
+  );
 }
 export default ResponsiveAppBar;

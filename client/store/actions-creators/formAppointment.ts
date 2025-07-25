@@ -13,17 +13,17 @@ export const addAppointment = (data:FormAppointment) => {
       const response = await axios.post(SERVER_URL + 'treatment', data);
       dispatch({ type: FormAppointmentTypes.ADD_FORM_APPOINTMENT,  payload: response.data });
       clearFieldForm();
-    }catch (e) {
-      dispatch({
-        type: FormAppointmentTypes.ADD_FORM_APPOINTMENT_ERROR,
-        payload: e.message,
-      });
+    } catch (e: unknown) {
+      if(e instanceof Error) {
+        dispatch({
+          type: FormAppointmentTypes.ADD_FORM_APPOINTMENT_ERROR,
+          payload: e.message,
+        });
+      }
     }
-
   }
 }
 export const updateFieldForm = (field:string, value:string) => {
-
   return {
     type: FormAppointmentTypes.EDIT_FIELD,
     payload: {field, value}
