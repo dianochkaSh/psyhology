@@ -22,10 +22,6 @@ export class AuthController {
     return this.authService.login(dto, res);
   }
 
-  @Post('logout')
-  logout(@Req() request: Request): Promise<any> {
-    return this.authService.logout(request);
-  }
   @Post('signUp')
   registrationUser(@Body() dto: CreateUserDto) {
    return this.userService.createUser(dto);
