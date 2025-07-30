@@ -14,7 +14,7 @@ const Articles = () => {
 
   const textTitle: string = "Статьи: ";
   const stylesTitle: string = "title-h1";
-  console.log(stylesTitle);
+
   return (
     <div className="container-articles">
       <BlockText styles={stylesTitle} text={textTitle} />

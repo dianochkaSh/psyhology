@@ -325,3 +325,33 @@ body{
         min-width: 76%;
     }
 }
+.form-update-person-information input{
+    width: 100%;
+    height: 30px;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+}
+.form-update-person-information p {
+    display: block;
+    overflow: hidden;
+    padding-right: 10px;
+}
+.section-person .img-profile{
+    height: auto !important;
+}
+.section-person .bt-blue {
+    display: inline-block;
+    border: 1px solid #76c3fc;
+    border-radius: 5px;
+    height: 25px;
+    line-height: 1.2rem;
+    background-color: #76c3fc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    color: #ffffff;
+    cursor: pointer;
+}

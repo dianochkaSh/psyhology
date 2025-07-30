@@ -4,9 +4,7 @@ import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 export default function isAuth(Component: any) {
   return function IsAuth(props: any) {
-    const { isAuthenticated } = useTypedSelector(state => state.signInForm);
     const router = useRouter();
-
 
     useEffect(() => {
       const isAuth = window.localStorage.getItem("access_token") ? true : false;

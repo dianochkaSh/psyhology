@@ -14,7 +14,6 @@ import { useDispatch } from 'react-redux';
 /* hooks */
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 
-
 /* actions */
 import { closeModal, openNotificationModal } from '@/store/actions-creators/modalRecord';
 import {
