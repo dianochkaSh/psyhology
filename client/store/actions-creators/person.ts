@@ -2,7 +2,6 @@ import { Dispatch } from 'react';
 import { IFormPerson, PersonAction, PersonActionTypes } from '@/types/person';
 import axios from 'axios';
 import { SERVER_URL } from '@/consts/consts';
-import { instances } from 'jodit/types/core/global';
 
 export const fetchPerson = () => {
  return async (dispatch: Dispatch<PersonAction>) => {
@@ -42,8 +41,6 @@ export const sendDateEditPerson = (person: IFormPerson) => {
   return async (dispatch: Dispatch<PersonAction>) => {
     try {
       const response = await axios.put(SERVER_URL + 'people/'+ person._id, person);
-      console.log('response.data');
-      console.log(response.data);
       dispatch({ payload: response.data, type: PersonActionTypes.SUBMIT_FORM_UPDATE });
     } catch (e: unknown) {
       if(e instanceof Error) {

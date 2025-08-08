@@ -1,5 +1,6 @@
 import React from 'react';
 import NavbarAdmin from '@/components/NavbarAdmin';
+import "../style.css";
 
 interface IAdminLayout {
   children: any

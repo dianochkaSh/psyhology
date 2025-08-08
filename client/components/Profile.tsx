@@ -44,7 +44,7 @@ const Profile: React.FC = () => {
               <div>
                 <p>Меня зовут <b>{person.name}</b>.</p>
                 <BlockTherapy time={person.time_consultation} format={person.format_consultation} />
-                <p className="container-about-p">{person.description}</p>
+                <p className="container-about-p" dangerouslySetInnerHTML={{ __html: person.description }}></p>
                 <p>Образование: {person.education}</p>
                 <p>Телефон: {person.phone}</p>
 
@@ -53,8 +53,6 @@ const Profile: React.FC = () => {
             {
               !isShowEditFields && <button className="bt-blue"  onClick={() => showEditForm(true)}>Изменить</button>
             }
-
-
           </div>
         </section>
       }
