@@ -301,7 +301,7 @@ body{
     padding-right: 5px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .container-articles .articles-list {
         display: inline-block;
         width: auto;
@@ -413,16 +413,42 @@ body{
 .form-add-article {
     margin: 20px 30px;
 }
-/*.form-add-article input[type="file"] {*/
-/*    display: none; !* Hides the native file input *!*/
-/*}*/
+.form-add-article input[type="file"] {
+    display: none; /* Hides the native file input */
+}
 .form-add-article .custom-file-upload {
     display: inline-block;
-    padding: 10px 9px;
+    padding: 5px 5px;
     background-color: #76c3fc;
     color: white;
     border-radius: 5px;
     cursor: pointer;
     margin-left: 10px;
-    /* Add other styling properties like font-size, border, etc. */
+    margin-right: 10px;
+    height: 23px;
+}
+.form-add-article  span{
+    color: #636b74;
+}
+.form-add-article  .bt-blue{
+    display: inline-block;
+    border: 1px solid #76c3fc;
+    border-radius: 5px;
+    height: 25px;
+    line-height: 1.2rem;
+    background-color: #76c3fc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+.error-container{
+    color: #cc0033;
+    background-color: #fce4e4;
+    border: 1px solid #fcc2c3;
+    padding: 10px 15px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
 }

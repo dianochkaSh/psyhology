@@ -13,7 +13,8 @@ export interface BlogState {
   posts: IBlog[],
   error: string,
   article: IBlog,
-  formAddArticle: IArticle
+  formAddArticle: IArticle,
+  successAdd: boolean
 }
 export enum BlogActionTypes {
     FETCH_BLOGS = 'FETCH_BLOGS',
@@ -26,7 +27,8 @@ export enum BlogActionTypes {
     CHANGE_VALUE_ARTICLE = 'CHANGE_VALUE_ARTICLE',
     ADD_ONE_ARTICLE = 'ADD_ONE_ARTICLE',
     ADD_ONE_ARTICLE_ERROR = 'ADD_ONE_ARTICLE_ERROR',
-    ADD_NEW_VALUE_FORM_ARTICLE = 'ADD_NEW_VALUE_FORM_ARTICLE'
+    ADD_NEW_VALUE_FORM_ARTICLE = 'ADD_NEW_VALUE_FORM_ARTICLE',
+    SHOW_ERROR = 'SHOW_ERROR'
 
 }
 interface FetchBlogsAction {
@@ -60,6 +62,10 @@ interface ChangeValueArticleAction {
     value: any
   }
 }
+interface ShowErrorAction {
+  type: BlogActionTypes.SHOW_ERROR,
+  payload: string
+}
 interface AddValueToFormAddArticleAction {
   type: BlogActionTypes.ADD_NEW_VALUE_FORM_ARTICLE,
   payload: {
@@ -74,7 +80,7 @@ interface FetchBlogsErrorAction {
 }
 interface AddOneArticleAction {
   type: BlogActionTypes.ADD_ONE_ARTICLE;
-  payload: IArticle
+  payload: { successAdd: true }
 }
 interface AddOneArticleErrorAction {
   type: BlogActionTypes.ADD_ONE_ARTICLE_ERROR;
@@ -91,4 +97,5 @@ export type BlogAction = FetchBlogsAction |
                           AddOneArticleAction |
                           AddOneArticleErrorAction |
                           AddValueToFormAddArticleAction |
+                          ShowErrorAction |
                           FetchOneArticleErrorAction;

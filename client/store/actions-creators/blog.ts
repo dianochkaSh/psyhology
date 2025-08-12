@@ -2,7 +2,7 @@ import { Dispatch } from 'react';
 import { BlogAction, BlogActionTypes, IBlog } from '@/types/blog';
 import axios from 'axios';
 
-/*constant*/
+/* constant */
 import { SERVER_URL } from '@/consts/consts';
 
 export const fetchBlog = (countEl:number ) => {
@@ -72,13 +72,15 @@ export const addNewValueToForm = (key: string, value: any) => {
   }
 }
 export const addArticle = (formAdd) => {
+
   return async (dispatch: Dispatch<BlogAction>) =>{
    try {
-     const response = axios.post(SERVER_URL + 'blogs/' , formAdd);
+     const response = await axios.post(SERVER_URL + 'blogs/' , formAdd);
      dispatch({
        type: BlogActionTypes.ADD_ONE_ARTICLE,
-       payload: response
+       payload: { successAdd: true }
      });
+
    } catch (e : unknown) {
     if(e instanceof Error ) {
       dispatch( {
@@ -87,6 +89,12 @@ export const addArticle = (formAdd) => {
       });
     }
    }
+  }
+}
+export const errorValidationError = (field: string) => {
+  return {
+    type: BlogActionTypes.SHOW_ERROR,
+    payload: (!field) ? '' : 'Введите значения в поле: '+ field
   }
 }
 

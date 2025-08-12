@@ -13,7 +13,8 @@ const initialState: BlogState = {
     title: '',
     description: '',
     picture: []
-  }
+  },
+  successAdd: false
 }
 
 
@@ -56,10 +57,12 @@ export const blogReducer = (state = initialState, action: BlogAction): BlogState
         formAddArticle: formItems
       }
     case BlogActionTypes.ADD_ONE_ARTICLE:
-      return  {...state, formAddArticle: {}}
+      return  {...state, successAdd: true}
     case BlogActionTypes.ADD_ONE_ARTICLE_ERROR: {
-      return {...state, error: action.payload}
+      return {...state, error: action.payload }
     }
+    case BlogActionTypes.SHOW_ERROR:
+      return { ...state, error: action.payload}
     default:
       return state;
   }
