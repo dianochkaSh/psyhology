@@ -13,6 +13,10 @@ export class Blog {
 
   @Prop()
   picture: string;
+  @Prop()
+  create_time: Date;
+  @Prop()
+  is_deleted: boolean;
 }
 
 export const BlogSchema = SchemaFactory.createForClass(Blog);
