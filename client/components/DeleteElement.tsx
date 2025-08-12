@@ -6,22 +6,22 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { DeleteForever } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 import { useDispatch } from 'react-redux';
+import { deleteOneArticle, showModalWindowDelete } from '@/store/actions-creators/blog';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 const  DeleteElement = ( id) => {
-  const [open, setOpen] = React.useState(false);
+  const { isShowModalDelete } = useTypedSelector(state => state.blog);
   const dispatch = useDispatch();
 
   const handleClickOpen = () => {
-    setOpen(true);
+    dispatch(showModalWindowDelete(true));
   };
 
   const handleClose = () => {
-    setOpen(false);
+    dispatch(showModalWindowDelete(false));
   };
   const handelDeleteArticle = (id) => {
-    console.log('delete');
-    console.log(id);
-
+    dispatch(deleteOneArticle(id.id));
   }
 
   return (
@@ -30,7 +30,7 @@ const  DeleteElement = ( id) => {
         <DeleteForever />
       </IconButton>
       <Dialog
-        open={open}
+        open={isShowModalDelete}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"

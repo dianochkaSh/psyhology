@@ -2,33 +2,41 @@ export interface  IBlog {
   _id: string,
   title: string,
   description: string,
-  picture: string
+  picture: string,
+  create_time: Date,
+  is_deleted: boolean,
 }
 export interface IArticle {
   title: string,
   description: string,
-  picture: any
+  picture: any,
+  create_time: Date,
+  is_deleted: boolean,
 }
+
 export interface BlogState {
   posts: IBlog[],
   error: string,
   article: IBlog,
   formAddArticle: IArticle,
-  successAdd: boolean
+  successAdd: boolean,
+  isShowModalDelete: boolean
 }
 export enum BlogActionTypes {
     FETCH_BLOGS = 'FETCH_BLOGS',
     FETCH_BLOGS_ERROR = 'FETCH_BLOGS_ERROR',
     FETCH_ONE_ARTICLE = 'FETCH_ONE_ARTICLE',
     FETCH_ONE_ARTICLE_ERROR = 'FETCH_ONE_ARTICLE_ERROR',
-    DELETE_ARTICLE = 'DELETE_ARTICLE',
     EDIT_ARTICLE = 'EDIT_ARTICLE',
     EDIT_ARTICLE_ERROR = 'EDIT_ARTICLE_ERROR',
     CHANGE_VALUE_ARTICLE = 'CHANGE_VALUE_ARTICLE',
     ADD_ONE_ARTICLE = 'ADD_ONE_ARTICLE',
     ADD_ONE_ARTICLE_ERROR = 'ADD_ONE_ARTICLE_ERROR',
     ADD_NEW_VALUE_FORM_ARTICLE = 'ADD_NEW_VALUE_FORM_ARTICLE',
-    SHOW_ERROR = 'SHOW_ERROR'
+    SHOW_ERROR = 'SHOW_ERROR',
+    DELETE_ONE_ARTICLE = 'DELETE_ONE_ARTICLE',
+    DELETE_ONE_ARTICLE_ERROR = 'DELETE_ONE_ARTICLE_ERROR',
+    SHOW_MODAL_DELETE_ARTICLE = 'SHOW_MODAL_DELETE_ARTICLE'
 
 }
 interface FetchBlogsAction {
@@ -48,7 +56,14 @@ interface EditArticleErrorAction {
   payload: string
 }
 interface DeleteArticleAction {
-  type: BlogActionTypes.DELETE_ARTICLE
+  type: BlogActionTypes.DELETE_ONE_ARTICLE;
+  payload: {
+    isShowModalDelete: false
+  }
+}
+interface DeleteArticleErrorAction {
+  type: BlogActionTypes.DELETE_ONE_ARTICLE_ERROR;
+  payload: string
 }
 
 interface FetchOneArticleErrorAction {
@@ -87,6 +102,12 @@ interface AddOneArticleErrorAction {
   payload: string
 }
 
+interface ShowModalArticleAction {
+  type: BlogActionTypes.SHOW_MODAL_DELETE_ARTICLE,
+  payload: {
+    isShowModalDelete: boolean
+  }
+}
 export type BlogAction = FetchBlogsAction |
                           FetchBlogsErrorAction |
                           FetchOneArticleAction |
@@ -98,4 +119,6 @@ export type BlogAction = FetchBlogsAction |
                           AddOneArticleErrorAction |
                           AddValueToFormAddArticleAction |
                           ShowErrorAction |
+                          DeleteArticleErrorAction |
+                          ShowModalArticleAction |
                           FetchOneArticleErrorAction;

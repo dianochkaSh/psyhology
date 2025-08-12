@@ -55,10 +55,11 @@ const FormAddArticle = () => {
       const formData = new FormData()
       formData.append('title', formAddArticle.title)
       formData.append('description', formAddArticle.description)
+      formData.append('is_deleted', false)
+      formData.append('create_time', new Date())
       formData.append('picture', formAddArticle.picture[0]);
       dispatch(addArticle(formData));
     }
-
 
   }
   const titlePicture = ( formAddArticle.picture !== undefined && formAddArticle.picture[0] !== undefined) && <span>{formAddArticle.picture[0].name}</span>

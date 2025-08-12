@@ -98,7 +98,31 @@ export const errorValidationError = (field: string) => {
   }
 }
 
-// export const deleteOneArticle = (id: string) => {
-//
-//
-// }
+export const showModalWindowDelete = (value:boolean) => {
+  return {
+    type: BlogActionTypes.SHOW_MODAL_DELETE_ARTICLE,
+    payload:  { isShowModalDelete : value  }
+  }
+}
+
+export const deleteOneArticle = (id: string) => {
+  return async (dispatch: Dispatch<BlogAction>) => {
+    try {
+      const response = await axios.delete(SERVER_URL + 'blogs/' + id);
+      dispatch ({
+        type: BlogActionTypes.DELETE_ONE_ARTICLE,
+        payload:  { isShowModalDelete: false  }
+      });
+    }  catch (e: unknown) {
+      if(e instanceof  Error){
+        dispatch({
+          type: BlogActionTypes.DELETE_ONE_ARTICLE_ERROR,
+          payload:e.message
+        })
+      }
+
+    }
+  }
+
+
+}

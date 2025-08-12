@@ -7,14 +7,19 @@ const initialState: BlogState = {
     _id: '',
     title: '',
     description: '',
-    picture: ''
+    picture: '',
+    create_time: new Date(),
+    is_deleted: false,
   },
   formAddArticle : {
     title: '',
     description: '',
-    picture: []
+    picture: [],
+    create_time: new Date(),
+    is_deleted: false,
   },
-  successAdd: false
+  successAdd: false,
+  isShowModalDelete: false
 }
 
 
@@ -62,7 +67,12 @@ export const blogReducer = (state = initialState, action: BlogAction): BlogState
       return {...state, error: action.payload }
     }
     case BlogActionTypes.SHOW_ERROR:
-      return { ...state, error: action.payload}
+      return { ...state, error: action.payload }
+    case BlogActionTypes.SHOW_MODAL_DELETE_ARTICLE: {
+      return  {...state, isShowModalDelete: action.payload.isShowModalDelete}
+    }
+    case BlogActionTypes.DELETE_ONE_ARTICLE:
+      return {...state, isShowModalDelete: false}
     default:
       return state;
   }
