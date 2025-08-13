@@ -19,7 +19,6 @@ const initialState: BlogState = {
     is_deleted: false,
   },
   successAdd: false,
-  isShowModalDelete: false
 }
 
 
@@ -68,11 +67,8 @@ export const blogReducer = (state = initialState, action: BlogAction): BlogState
     }
     case BlogActionTypes.SHOW_ERROR:
       return { ...state, error: action.payload }
-    case BlogActionTypes.SHOW_MODAL_DELETE_ARTICLE: {
-      return  {...state, isShowModalDelete: action.payload.isShowModalDelete}
-    }
     case BlogActionTypes.DELETE_ONE_ARTICLE:
-      return {...state, isShowModalDelete: false}
+      return {...state }
     default:
       return state;
   }

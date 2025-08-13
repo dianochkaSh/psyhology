@@ -2,46 +2,52 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { DeleteForever } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
+import { deleteOneArticle } from '@/store/actions-creators/blog';
+import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
-import { deleteOneArticle, showModalWindowDelete } from '@/store/actions-creators/blog';
-import { useTypedSelector } from '@/hooks/useTypedSelector';
 
-const  DeleteElement = ( id) => {
-  const { isShowModalDelete } = useTypedSelector(state => state.blog);
+const DeleteElement = ({ currentId, title } ) => {
+  const [open, setOpen] = React.useState(false);
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const handleClickOpen = () => {
-    dispatch(showModalWindowDelete(true));
+    setOpen(true);
   };
 
   const handleClose = () => {
-    dispatch(showModalWindowDelete(false));
+    setOpen(false);
   };
-  const handelDeleteArticle = (id) => {
-    dispatch(deleteOneArticle(id.id));
+  const handleDeleteArticle = () => {
+    setOpen(false);
+    dispatch(deleteOneArticle(currentId));
+   //router.push('/admin/blogs/');
+    router.refresh();
   }
 
   return (
     <React.Fragment>
-      <IconButton aria-label="delete" onClick={handleClickOpen}>
+      <IconButton aria-label="share"  title="удалить статью" onClick={handleClickOpen}>
         <DeleteForever />
       </IconButton>
       <Dialog
-        open={isShowModalDelete}
+        open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Вы точно хотите удалить  статью? "}
+          {`Вы хотите удалить статью: ${title} ?`}
         </DialogTitle>
         <DialogActions>
           <Button onClick={handleClose}>Нет</Button>
-          <Button onClick={() => handelDeleteArticle(id)} autoFocus>
-            Да
+          <Button onClick={handleDeleteArticle} autoFocus>
+           Да
           </Button>
         </DialogActions>
       </Dialog>
@@ -49,3 +55,4 @@ const  DeleteElement = ( id) => {
   );
 }
 export default DeleteElement;
+

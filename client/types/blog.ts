@@ -20,7 +20,6 @@ export interface BlogState {
   article: IBlog,
   formAddArticle: IArticle,
   successAdd: boolean,
-  isShowModalDelete: boolean
 }
 export enum BlogActionTypes {
     FETCH_BLOGS = 'FETCH_BLOGS',
@@ -57,9 +56,6 @@ interface EditArticleErrorAction {
 }
 interface DeleteArticleAction {
   type: BlogActionTypes.DELETE_ONE_ARTICLE;
-  payload: {
-    isShowModalDelete: false
-  }
 }
 interface DeleteArticleErrorAction {
   type: BlogActionTypes.DELETE_ONE_ARTICLE_ERROR;
@@ -102,12 +98,7 @@ interface AddOneArticleErrorAction {
   payload: string
 }
 
-interface ShowModalArticleAction {
-  type: BlogActionTypes.SHOW_MODAL_DELETE_ARTICLE,
-  payload: {
-    isShowModalDelete: boolean
-  }
-}
+
 export type BlogAction = FetchBlogsAction |
                           FetchBlogsErrorAction |
                           FetchOneArticleAction |
@@ -120,5 +111,4 @@ export type BlogAction = FetchBlogsAction |
                           AddValueToFormAddArticleAction |
                           ShowErrorAction |
                           DeleteArticleErrorAction |
-                          ShowModalArticleAction |
                           FetchOneArticleErrorAction;
