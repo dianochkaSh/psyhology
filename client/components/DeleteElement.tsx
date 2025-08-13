@@ -2,8 +2,6 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { DeleteForever } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
@@ -26,7 +24,6 @@ const DeleteElement = ({ currentId, title } ) => {
   const handleDeleteArticle = () => {
     setOpen(false);
     dispatch(deleteOneArticle(currentId));
-   //router.push('/admin/blogs/');
     router.refresh();
   }
 

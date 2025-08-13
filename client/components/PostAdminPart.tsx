@@ -5,13 +5,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import ShareIcon from '@mui/icons-material/Share';
 import IconButton from '@mui/material/IconButton';
-import { DeleteForever, Edit } from '@mui/icons-material';
+import { Edit } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 import DeleteElement from '@/components/DeleteElement';
 import React from 'react';
 import { IBlog } from '@/types/blog';
-import { deleteOneArticle } from '@/store/actions-creators/blog';
-import { useDispatch } from 'react-redux';
 const PostAdminPart:React.FC<IBlog> = ( { article } ) => {
   const description = (article  !== undefined && article.description !==  undefined ) ?  article.description.slice(0,115) : '';
   const router = useRouter();
