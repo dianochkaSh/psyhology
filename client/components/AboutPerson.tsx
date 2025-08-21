@@ -32,7 +32,6 @@ const AboutPerson:React.FC = () => {
 
   }
 
-console.log(person);
   return (
     <>
       { person!== null &&

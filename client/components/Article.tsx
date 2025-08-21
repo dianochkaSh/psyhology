@@ -3,26 +3,34 @@ import Card from '@mui/joy/Card' ;
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import { AspectRatio, CardActions, CardOverflow, Link } from '@mui/joy';
-import { useRouter } from 'next/navigation';
 
 /* types */
 import { IBlog } from '@/types/blog';
+import { SERVER_URL } from '@/consts/consts';
+import Image from 'next/image';
 
 interface BlogPost {
   post: IBlog[]
 }
 
 const Article : React.FC<BlogPost> = ({ post }) =>  {
+
+  const [img, setImg] = React.useState(SERVER_URL + post.picture);
   const description = (post  !== undefined && post.description !==  undefined ) ?  post.description.slice(0,115) : '';
+  const handlerErrorImage = () => {
+    setImg('/img-problems/stypor.jpeg');
+  }
   return (
     <Card className="card-article" sx={{ width: 320, marginBottom: 3, marginTop: 3 }}>
       <CardOverflow>
         <AspectRatio ratio="2">
-          <img
-            src="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318"
-            srcSet="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318&dpr=2 2x"
+          <Image
+            src={img}
+            width={300}
+            height={200}
             loading="lazy"
             alt=""
+            onError={handlerErrorImage}
           />
         </AspectRatio>
       </CardOverflow>
