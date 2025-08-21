@@ -1,9 +1,7 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { changeEditForm, fetchPerson, fullDateFormEditPerson } from '@/store/actions-creators/person';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
-import { IPerson } from '@/types/person';
 import { useDispatch } from 'react-redux';
-import Image from 'next/image';
 import { SERVER_URL } from '@/consts/consts';
 import BlockText from '@/components/BlockText';
 import BlockTherapy from '@/components/BlockTherapy';
@@ -33,7 +31,11 @@ const Profile: React.FC = () => {
       { (person !== undefined) &&
         <section className="section-person">
           <div className="container-picture">
-            <Image alt={person.name} resizeMode="contain" className="img-profile" src={SERVER_URL + person.photo} layout="fill" />
+            <img
+              alt={person.name}
+              width="100%"
+              src={SERVER_URL + person.photo}
+            />
           </div>
           <div className="container-about">
             <BlockText styles={stylesTitle} text={textTitle} />
@@ -44,7 +46,8 @@ const Profile: React.FC = () => {
               <div>
                 <p>Меня зовут <b>{person.name}</b>.</p>
                 <BlockTherapy time={person.time_consultation} format={person.format_consultation} />
-                <p className="container-about-p" dangerouslySetInnerHTML={{ __html: person.description }}></p>
+
+                <div className="container-about-p" dangerouslySetInnerHTML={{ __html: person.description }}></div>
                 <p>Образование: {person.education}</p>
                 <p>Телефон: {person.phone}</p>
 

@@ -3,6 +3,7 @@ import { DOMAIN } from '@/consts/consts';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  unoptimized: true,
   images: {
     domains: [DOMAIN],
 

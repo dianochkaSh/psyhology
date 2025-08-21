@@ -1,3 +1,4 @@
+
 export interface FormAppointment {
   name: string,
   description: string,
@@ -23,9 +24,9 @@ export enum FormAppointmentTypes {
 interface UpdateFromAppointmentAction {
   type: FormAppointmentTypes.EDIT_FIELD,
   payload: {
-    field: keyof FormAppointment;
-    value: any;
-  };
+    key: keyof FormAppointment,
+    value: any
+  }
 }
 interface AddFormAppointmentAction {
   type: FormAppointmentTypes.ADD_FORM_APPOINTMENT;

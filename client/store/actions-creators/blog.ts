@@ -9,7 +9,7 @@ export const fetchBlog = (countEl:number ) => {
   return async (dispatch: Dispatch<BlogAction>) => {
     try {
       const response = await axios.get( SERVER_URL + 'blogs' + "?count=" + countEl);
-      dispatch({ type: BlogActionTypes.FETCH_BLOGS, payload: response.data });
+     dispatch({ type: BlogActionTypes.FETCH_BLOGS, payload: response.data });
     } catch (e: unknown) {
       if(e instanceof  Error)
       {
@@ -42,8 +42,6 @@ export const updateArticle = (article: IBlog) => {
   return async (dispatch: Dispatch<BlogAction>) => {
     try {
       const response = await axios.put(SERVER_URL + 'blogs/' + article._id, article);
-      console.log('response');
-      console.log(response);
       dispatch({ type: BlogActionTypes.EDIT_ARTICLE, payload: response});
     }
     catch (e: unknown) {

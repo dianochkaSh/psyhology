@@ -10,6 +10,8 @@ import { useRouter } from 'next/navigation';
 import DeleteElement from '@/components/DeleteElement';
 import React from 'react';
 import { IBlog } from '@/types/blog';
+import { VKShareButton, VKIcon } from 'react-share';
+
 const PostAdminPart:React.FC<IBlog> = ( { article } ) => {
   const description = (article  !== undefined && article.description !==  undefined ) ?  article.description.slice(0,115) : '';
   const router = useRouter();
@@ -39,6 +41,14 @@ const PostAdminPart:React.FC<IBlog> = ( { article } ) => {
             <IconButton aria-label="share">
               <ShareIcon />
             </IconButton>
+            <VKShareButton
+              url="http://localhost:3003/blogs/6895ec2873c40586f4675e58"
+              title={article.title}
+              description={article.description}
+              image="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318" // Optional: URL of an image to include
+            >
+              <VKIcon size={32} round />
+            </VKShareButton>
             <DeleteElement title={article.title}  currentId={article._id}/>
             <IconButton aria-label="edit" onClick={() => handlerOpenPageEditPost(article._id)}>
         <Edit />

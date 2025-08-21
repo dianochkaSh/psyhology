@@ -15,7 +15,7 @@ const initialState: BlogState = {
     title: '',
     description: '',
     picture: [],
-    create_time: new Date(),
+    create_time: '',
     is_deleted: false,
   },
   successAdd: false,

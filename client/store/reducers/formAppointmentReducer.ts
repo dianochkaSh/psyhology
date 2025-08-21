@@ -19,7 +19,17 @@ export const formAppointmentReducer = (state = initialState, action: FormAppoint
     case FormAppointmentTypes.ADD_FORM_APPOINTMENT_ERROR:
       return {...state, error: action.payload }
     case FormAppointmentTypes.EDIT_FIELD:
-      return { ...state, formAppointment: action.payload }
+      const updateItems = Object.entries(state.formAppointment).reduce((acc, [key, value]) => {
+        return {
+          ...acc,
+          [key]: (key === action.payload.key) ? action.payload.value : value,
+        }
+      }, {});
+      return {
+        ...state,
+        formAppointment: updateItems
+      }
+
     case FormAppointmentTypes.CLEAR_FIELD:
       return { ...state,
        formAppointment : {

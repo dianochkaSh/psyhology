@@ -3,14 +3,14 @@ export interface  IBlog {
   title: string,
   description: string,
   picture: string,
-  create_time: Date,
+  create_time: any,
   is_deleted: boolean,
 }
 export interface IArticle {
   title: string,
   description: string,
   picture: any,
-  create_time: Date,
+  create_time: any,
   is_deleted: boolean,
 }
 
@@ -35,7 +35,6 @@ export enum BlogActionTypes {
     SHOW_ERROR = 'SHOW_ERROR',
     DELETE_ONE_ARTICLE = 'DELETE_ONE_ARTICLE',
     DELETE_ONE_ARTICLE_ERROR = 'DELETE_ONE_ARTICLE_ERROR',
-    SHOW_MODAL_DELETE_ARTICLE = 'SHOW_MODAL_DELETE_ARTICLE'
 
 }
 interface FetchBlogsAction {

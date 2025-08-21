@@ -26,7 +26,10 @@ export const addAppointment = (data:FormAppointment) => {
 export const updateFieldForm = (field:string, value:string) => {
   return {
     type: FormAppointmentTypes.EDIT_FIELD,
-    payload: { field, value }
+    payload: {
+      key: field,
+      value: value
+    }
   };
 }
 export const clearFieldForm = () => {

@@ -172,7 +172,7 @@ body{
     text-align: center;
 }
 .section-person .container-picture img{
-    width: 400px !important;
+    /*width: 400px !important;*/
     position: relative !important;
 }
 .container-about .title-person-block {
@@ -311,9 +311,15 @@ body{
     }
     .section-person .container-about, .section-person .container-picture {
         width: auto;
+        margin: 0 auto;
+        padding: 12px 13px;
     }
     .app-body .main-title {
         font-size: 2rem;
+    }
+
+    .container-about-p {
+        padding: 2px 15px;
     }
 
     .section-contact {
@@ -451,4 +457,15 @@ body{
     margin-top: 10px;
     font-size: 14px;
     font-weight: bold;
+}
+.phone {
+    height: 34px;
+    border-color: #cdd7e1;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 0;
+}
+.description {
+    text-align: justify;
+    font-size: 0.9rem;
 }

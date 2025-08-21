@@ -10,6 +10,7 @@ import Stack from '@mui/joy/Stack';
 import ModalDialog from '@mui/joy/ModalDialog';
 import { Checkbox, Textarea } from '@mui/joy';
 import { useDispatch } from 'react-redux';
+import { MaskedInput, createDefaultMaskGenerator } from 'react-hook-mask';
 
 /* hooks */
 import { useTypedSelector } from '@/hooks/useTypedSelector';
@@ -39,6 +40,9 @@ const { formAppointment, agreement,  error} = useTypedSelector(state => state.ap
     dispatch(handleCheckboxAction(false));
     dispatch(closeModal());
   }
+  const handleValuePhone = (value) => {
+    dispatch(updateFieldForm('phone', value));
+  }
   const handleValueField = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     dispatch(clearErrorFormAppointment());
     dispatch(updateFieldForm(event.currentTarget.name, event.currentTarget.value ));
@@ -55,6 +59,8 @@ const { formAppointment, agreement,  error} = useTypedSelector(state => state.ap
   const handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(handleCheckboxAction(event.target.checked));
   }
+  const maskGenerator = createDefaultMaskGenerator('+7 (999) 99 99 999');
+
   return (
     <>
       { isOpen &&
@@ -86,7 +92,13 @@ const { formAppointment, agreement,  error} = useTypedSelector(state => state.ap
                 </FormControl>
                 <FormControl>
                   <FormLabel>Телефон</FormLabel>
-                  <Input type="number" name="phone" value={formAppointment.phone} onChange={handleValueField} autoFocus required />
+                  <MaskedInput
+                    className="phone"
+                    maskGenerator={maskGenerator}
+                    value={formAppointment.phone}
+                    onChange={handleValuePhone}
+                  />
+
                 </FormControl>
                 <FormControl>
                   <FormLabel>Опишите вашу проблему:</FormLabel>

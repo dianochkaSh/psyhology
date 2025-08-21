@@ -30,12 +30,8 @@ const Article : React.FC<BlogPost> = ({ post }) =>  {
         <Typography sx={{ justifyContent: 'left' }} level="title-lg">{post.title}</Typography>
       </div>
       <CardContent orientation="horizontal">
-        <div>
-          <Typography
-            sx={{ justifyContent: 'justify' }}
-            level="body-xs">{description + '...'}</Typography>
-        </div>
-      </CardContent>
+        <div className="description"  dangerouslySetInnerHTML={{ __html: description }}></div>
+     </CardContent>
       <CardActions buttonFlex="0 1 120px">
         <Link
           href={`/blogs/${post._id}`}

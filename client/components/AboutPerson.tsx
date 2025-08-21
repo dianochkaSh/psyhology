@@ -1,7 +1,8 @@
-import Image from 'next/image';
+
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '@mui/joy/Button';
+import parse from 'html-react-parser';
 
 /* components */
 import BlockTherapy from '@/components/BlockTherapy';
@@ -31,18 +32,19 @@ const AboutPerson:React.FC = () => {
 
   }
 
+console.log(person);
   return (
     <>
       { person!== null &&
         <section className="section-person" id="about">
           <div className="container-picture">
-            <Image alt={person.name} src={SERVER_URL + person.photo} layout="fill" />
+            <img alt={person.name} src={SERVER_URL + person.photo} />
           </div>
           <div className="container-about">
             <BlockText styles={stylesTitle} text={textTitle} />
             <BlockTherapy time={person.time_consultation} format={person.format_consultation} />
             <p>Меня зовут <b>{person.name}</b>.</p>
-            <p className="container-about-p">{person.description}</p>
+            <div dangerouslySetInnerHTML={{ __html: person.description }}></div>
             <p>Образование: {person.education}</p>
             <Button
               className="bt-record"
@@ -61,4 +63,4 @@ const AboutPerson:React.FC = () => {
   )
 }
 
-  export default AboutPerson;
+export default AboutPerson;

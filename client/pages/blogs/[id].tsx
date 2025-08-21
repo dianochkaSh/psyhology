@@ -41,7 +41,7 @@ const ArticlePage: React.FC = () => {
                  role="presentation" />
           </div>
           <h1 className="article-title">{article.title}</h1>
-          <div className="article-content">{article.description}</div>
+          <div className="article-content" dangerouslySetInnerHTML={{ __html: article.description }}></div>
         </article>
       </div>
     </MainLayout>

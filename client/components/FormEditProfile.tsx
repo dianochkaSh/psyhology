@@ -8,6 +8,7 @@ import {
 } from '@/store/actions-creators/person';
 import { IFormPerson } from '@/types/person';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { createDefaultMaskGenerator, MaskedInput } from 'react-hook-mask';
 
 const FormEditProfile:React.FC = ({ isShowForm }) => {
   const { formEditPerson } = useTypedSelector(state => state.person);
@@ -22,6 +23,9 @@ const FormEditProfile:React.FC = ({ isShowForm }) => {
       insertImageAsBase64URI: false,
     },
   };
+  const handleValuePhone = (value) => {
+    dispatch(changeFieldsForm('phone', value));
+  }
 
   const handlerChangeFields = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     dispatch(changeFieldsForm(event.currentTarget.name, event.currentTarget.value));
@@ -44,6 +48,8 @@ const FormEditProfile:React.FC = ({ isShowForm }) => {
     ssr: false,
   });
 
+  const maskGenerator = createDefaultMaskGenerator('+7 (999) 99 99 999');
+
   return (
     <>
       {
@@ -65,7 +71,14 @@ const FormEditProfile:React.FC = ({ isShowForm }) => {
             <input name="education" value={formEditPerson.education} onChange={handlerChangeFields} />
           </p>
           <p>Телефон:
-            <input name="phone" value={formEditPerson.phone} onChange={handlerChangeFields} />
+
+            <MaskedInput
+              className="phone"
+              name="phone"
+              maskGenerator={maskGenerator}
+              value={formEditPerson.phone}
+              onChange={handleValuePhone}
+            />
           </p>
           <JoditEditor
             ref={editor}
