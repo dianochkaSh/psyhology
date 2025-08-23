@@ -63,8 +63,7 @@ const  ResponsiveAppBar:React.FC = ( ) => {
   };
 
   const handlerAnchorMenu = (url:string) => {
-    console.log(url);
-    router.push('/'+ url);
+    router.push(url);
   }
 
   const openWindowSignUp = (event: React.MouseEvent<HTMLElement>) => {
@@ -88,7 +87,7 @@ const  ResponsiveAppBar:React.FC = ( ) => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/admin"
             sx={{
               mr: 6,
               display: { xs: 'none', md: 'flex' },

@@ -18,6 +18,7 @@ import MainLayout from '@/layouts/MainLayout';
 
 const ArticlePage: React.FC = () => {
   const { article } = useTypedSelector(state => state.blog);
+  const [img, setImg] = React.useState(SERVER_URL + article.picture);
   const listBreadcrumbs = [
     {
       title: "Главная",
@@ -29,6 +30,10 @@ const ArticlePage: React.FC = () => {
     },
   ];
 
+  const handlerErrorImage = () => {
+    setImg('/img-problems/stypor.jpeg');
+  }
+
   return (
     <MainLayout>
       <Breadcrumbs titlePage={article.title} listBreadcrumbs={listBreadcrumbs} />
@@ -37,7 +42,8 @@ const ArticlePage: React.FC = () => {
           <div className="article-image">
             <img height={578}
                  width='auto'
-                 src={SERVER_URL + article.picture}
+                 src={img}
+                 onError={handlerErrorImage}
                  role="presentation" />
           </div>
           <h1 className="article-title">{article.title}</h1>
