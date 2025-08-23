@@ -25,6 +25,7 @@ export class BlogService {
   async getAllPosts(count = 10, offset = 0): Promise<Blog[]> {
     const posts = await this.BlogModel.find({
       is_deleted: false }).skip(offset).limit(count);
+    console.log(posts);
     return posts;
   }
 
@@ -33,10 +34,12 @@ export class BlogService {
     return post;
   }
 
-  deleteArticle(id: string) {
-    const post = this.BlogModel.findOneAndUpdate(
+  async deleteArticle(id: string) {
+    const post = await this.BlogModel.findOneAndUpdate(
       { _id: id },
-      { is_deleted: true }).setOptions({ overwrite: true, new: true }).populate('is_deleted');
+      { $set: { is_deleted: true }},
+      { new: true, upsert: true }
+    );
     return post;
   }
   async updateArticle(id: string, updateArticleDto: UpdateBlogDto) {
